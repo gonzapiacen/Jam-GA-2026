@@ -53,11 +53,11 @@ func _process(delta: float) -> void:
 	pass
 
 func jugar() -> void:
-	if tipoEfecto == 0:
+	if tipoEfecto == 0: #dano
 		enemy.damage -= efecto
-	else: if tipoEfecto == 1:
+	else: if tipoEfecto == 1: #vida
 		player.modified_health(-efecto)
-	else:
+	else: # energia
 		player.modified_energy(efecto)
 
 func _on_area_2d_mouse_entered() -> void:

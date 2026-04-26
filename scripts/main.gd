@@ -6,6 +6,8 @@ var campo_enemigo: Array[Carta] = []
 
 var carta = preload("res://scenes/carta.tscn")
 var mazo = preload("res://scenes/mazo.tscn")
+var enemy = preload("res://scenes/enemy.tscn")
+var player = preload("res://scenes/player.tscn")
 var nueva_carta: Carta
 
 var cartas_jugador: Node2D
@@ -15,8 +17,11 @@ var sonido_romper_carta: AudioStreamPlayer2D
 var sonido_jugar_carta: AudioStreamPlayer2D
 
 var info_carta: Node2D
-var mano_jugador: Node2D
+var mano_jugador: Array[Carta]
 var mazo_jugador: Mazo
+
+var mano_nodo: Node2D
+var descarte_nodo: Node2D
 
 var turno_jugador: bool = true
 
@@ -25,15 +30,24 @@ var tween: Tween
 var monto: Array[Carta] = []
 var descarte: Array[Carta] = []
 
+var player_actual: Player
+var enemigo_actual: Enemy
+
+var boton_pasar_turno: Button
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
 	info_carta = $Mapa/InfoCarta
+	boton_pasar_turno = $CampoCartas/PasarTurno
+	
+	boton_pasar_turno.pressed.connect(cambiarTurno)
 	
 	# COSAS JUGADOR
 	
 	mazo_jugador = $CampoCartas/Mazo
-	mano_jugador = $CampoCartas/Mano
+	mano_nodo = $CampoCartas/Mano
+	descarte_nodo = $CampoCartas/Descarte
 	
 	# MUSICA Y SONIDOS
 	
@@ -47,16 +61,39 @@ func _ready() -> void:
 	mazo_jugador.position.y = 302
 	add_child(mazo_jugador)
 	
+	player_actual = player.instantiate()
+	
+	#player_actual.health = 20
+	#player_actual.energy = 10
+	
+	enemigo_actual = enemy.instantiate()
+	
+	enemigo_actual.player = player_actual
+	
 	for i in range(mazo_jugador.monto.size()):
 		nueva_carta = carta.instantiate()
 		monto.append(nueva_carta)
 	
 	mazo_jugador.find_child("Valor").visible = true
 	
+	empezarTurno()
+	
+	musica_de_fondo.play()
+		
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+	
+func crearLadoJugador() -> void:
+	pass
+	
+func empezarTurno() -> void:
 	for i in range(3):
 		nueva_carta = mazo_jugador.robarCarta()
 		
-		mano_jugador.add_child(nueva_carta)
+		mano_nodo.add_child(nueva_carta)
+		mano_jugador.append(nueva_carta)
+		
 		nueva_carta.ver_info.connect(mostrarInfo)
 		nueva_carta.ocultar_info.connect(ocultarInfo)
 		nueva_carta.jugar_carta.connect(jugarCarta)
@@ -73,21 +110,33 @@ func _ready() -> void:
 		await tween.finished
 		tween.kill()
 	
-	musica_de_fondo.play()
-		
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
-func crearLadoJugador() -> void:
-	pass
-	
 func cambiarTurno() -> void:
-	turno_jugador = !turno_jugador
+	enviarCartasManoADescarte()
+	print("TURNO ENEMIGO")
+	turno_jugador = false
 	
-func enviarCartaDescarte(carta: Carta) -> void:
-	descarte.append(carta)
+	await get_tree().create_timer(2).timeout
+	ejecutarTurnoEnemigo()
+	await get_tree().create_timer(2).timeout
+	turno_jugador = true
+	print("TU TURNO")
+	empezarTurno()
 	
+func ejecutarTurnoEnemigo():
+	print("Enemigo ha atacado")
+	enemigo_actual.attack()
+	print("Vida personaje: ", player_actual.health)
+	print("Vida enemigo: ", enemigo_actual.health)
+	
+func enviarCartasManoADescarte() -> void:
+	descarte += mano_jugador
+	for hijo in mano_nodo.get_children():
+		hijo.reparent(descarte_nodo,false)
+		hijo.position.x = 0
+		hijo.position.y = 0
+		hijo.scale.x = 1
+		hijo.scale.y = 1
+		
 func eliminarCarta(carta: Carta) -> void:
 	sonido_romper_carta.play()
 	carta.queue_free()
@@ -99,6 +148,9 @@ func ocultarInfo() -> void:
 	info_carta.hide()
 
 func jugarCarta(carta: Carta) -> void:
+	if !turno_jugador:
+		return
+		
 	if campo_jugador.size() == 3 :
 		print("Campo lleno")
 		return

@@ -5,7 +5,7 @@ class_name Player
 @export var energy: int
 
 func modified_health(i: int) -> void:
-	health += i
+	health = health + i
 
 func modified_energy(i: int) -> void:
-	energy += i
+	energy = energy + i

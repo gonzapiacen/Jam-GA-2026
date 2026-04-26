@@ -57,24 +57,6 @@ z_index = 2
 position = Vector2(0, 126)
 scale = Vector2(3.5, 1.968875)
 
-[node name="Carta1" type="Sprite2D" parent="CampoCartas/Mano" unique_id=1982217459]
-visible = false
-position = Vector2(-21, -40)
-scale = Vector2(0.28571427, 0.50790423)
-texture = ExtResource("3_fgx4m")
-
-[node name="Carta2" type="Sprite2D" parent="CampoCartas/Mano" unique_id=1257183593]
-visible = false
-position = Vector2(0.285717, -40.63234)
-scale = Vector2(0.28571427, 0.50790423)
-texture = ExtResource("3_fgx4m")
-
-[node name="Carta3" type="Sprite2D" parent="CampoCartas/Mano" unique_id=1599134004]
-visible = false
-position = Vector2(20.28571, -40.63234)
-scale = Vector2(0.28571427, 0.50790423)
-texture = ExtResource("3_fgx4m")
-
 [node name="Mazo" parent="CampoCartas" unique_id=540842684 instance=ExtResource("6_k5gr2")]
 visible = false
 position = Vector2(160, 68)
@@ -83,10 +65,8 @@ position = Vector2(160, 68)
 position = Vector2(-161, -67)
 rotation = -3.1415925
 
-[node name="Descarte" type="Sprite2D" parent="CampoCartas" unique_id=2096883942]
-visible = false
+[node name="Descarte" type="Node2D" parent="CampoCartas" unique_id=1172116759]
 position = Vector2(-161, 68)
-texture = ExtResource("3_fgx4m")
 
 [node name="Descarte2" type="Sprite2D" parent="CampoCartas" unique_id=997347860]
 visible = false
@@ -115,6 +95,15 @@ visible = false
 position = Vector2(-74, -46)
 rotation = -3.1415925
 texture = ExtResource("3_fgx4m")
+
+[node name="PasarTurno" type="Button" parent="CampoCartas" unique_id=1799541714]
+offset_left = 143.0
+offset_top = -22.0
+offset_right = 181.0
+offset_bottom = -1.0
+theme_override_fonts/font = ExtResource("4_cop7a")
+theme_override_font_sizes/font_size = 12
+text = "Pasar"
 
 [node name="MusicaFondo" type="AudioStreamPlayer2D" parent="." unique_id=735427863]
 visible = false
