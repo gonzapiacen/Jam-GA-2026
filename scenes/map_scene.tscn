@@ -79,3 +79,5 @@ map = NodePath("..")
 position = Vector2(544, 48)
 level = 5
 map = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1989120802]

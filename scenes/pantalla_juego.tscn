@@ -1,91 +1,96 @@
 [gd_scene format=3 uid="uid://cdhxocl5or8ev"]
 
-[ext_resource type="Texture2D" uid="uid://xc0fcpsm604i" path="res://icon.svg" id="1_5mp1o"]
-[ext_resource type="Script" uid="uid://belqeeg6egakk" path="res://scenes/main.gd" id="1_ry4pw"]
-[ext_resource type="PackedScene" uid="uid://do0mh3rukqw4a" path="res://scenes/mazo.tscn" id="2_xty2j"]
-[ext_resource type="Texture2D" uid="uid://ctp60vy51om4f" path="res://scenes/assets/texturas/frent_carta.png" id="3_gfcew"]
-[ext_resource type="FontFile" uid="uid://cenlao1rovtkx" path="res://scenes/assets/fonts/alagard.ttf" id="4_mu0do"]
-[ext_resource type="Texture2D" uid="uid://bmsqh3yvvorov" path="res://scenes/assets/texturas/mesaCartas.png" id="6_71ce6"]
-[ext_resource type="AudioStream" uid="uid://dldlu0u6ae8ta" path="res://scenes/assets/musica/cancion_1.ogg" id="7_mu0do"]
-[ext_resource type="AudioStream" uid="uid://bws86hpu5wjnv" path="res://scenes/assets/sonidos/romper_carta.ogg" id="8_4xi10"]
-[ext_resource type="AudioStream" uid="uid://tgv0rae3k3qh" path="res://scenes/assets/sonidos/poner_carta_en_campo.ogg" id="9_8ocnp"]
+[ext_resource type="Script" uid="uid://belqeeg6egakk" path="res://scripts/main.gd" id="1_8ocnp"]
+[ext_resource type="Texture2D" uid="uid://xc0fcpsm604i" path="res://icon.svg" id="2_3oebh"]
+[ext_resource type="Texture2D" uid="uid://ctp60vy51om4f" path="res://assets/texturas/frent_carta.png" id="3_fgx4m"]
+[ext_resource type="FontFile" uid="uid://cenlao1rovtkx" path="res://assets/fonts/alagard.ttf" id="4_cop7a"]
+[ext_resource type="Texture2D" uid="uid://bmsqh3yvvorov" path="res://assets/texturas/mesaCartas.png" id="5_e817k"]
+[ext_resource type="PackedScene" uid="uid://do0mh3rukqw4a" path="res://scenes/mazo.tscn" id="6_k5gr2"]
+[ext_resource type="AudioStream" uid="uid://dldlu0u6ae8ta" path="res://assets/musica/cancion_1.ogg" id="7_iikg4"]
+[ext_resource type="AudioStream" uid="uid://bws86hpu5wjnv" path="res://assets/sonidos/romper_carta.ogg" id="8_p2mjs"]
+[ext_resource type="PackedScene" uid="uid://capum1kkvsn3m" path="res://scenes/map_scene.tscn" id="9_8ocnp"]
+[ext_resource type="AudioStream" uid="uid://tgv0rae3k3qh" path="res://assets/sonidos/poner_carta_en_campo.ogg" id="9_cj0mm"]
 
 [node name="PantallaJuego" type="Node2D" unique_id=1014672054]
-script = ExtResource("1_ry4pw")
+script = ExtResource("1_8ocnp")
 metadata/_edit_horizontal_guides_ = [360.0]
 
 [node name="Fondo" type="Sprite2D" parent="." unique_id=2023025988]
 position = Vector2(224.00002, 54)
 scale = Vector2(3.5, 0.844)
-texture = ExtResource("1_5mp1o")
+texture = ExtResource("2_3oebh")
 
 [node name="Mapa" type="Sprite2D" parent="." unique_id=1542838033]
 position = Vector2(544, 180.004)
 scale = Vector2(1.5000001, 2.8125622)
-texture = ExtResource("1_5mp1o")
+texture = ExtResource("2_3oebh")
 
 [node name="InfoCarta" type="Node2D" parent="Mapa" unique_id=1860270056]
 visible = false
 
 [node name="Imagen" type="Sprite2D" parent="Mapa/InfoCarta" unique_id=422211542]
 position = Vector2(0, -20.623188)
-texture = ExtResource("3_gfcew")
+texture = ExtResource("3_fgx4m")
 
 [node name="Info" type="Label" parent="Mapa/InfoCarta" unique_id=2110359957]
 offset_left = -53.33333
 offset_top = 21.33144
 offset_right = 53.33333
 offset_bottom = 55.464024
-theme_override_fonts/font = ExtResource("4_mu0do")
+theme_override_fonts/font = ExtResource("4_cop7a")
 theme_override_font_sizes/font_size = 8
 text = "Información de la carta que informa información informativa"
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
+[node name="MapScene" parent="Mapa" unique_id=849957452 instance=ExtResource("9_8ocnp")]
+position = Vector2(-362.66666, -64.00001)
+scale = Vector2(0.6666666, 0.3555477)
+
 [node name="CampoCartas" type="Sprite2D" parent="." unique_id=1759704466]
 position = Vector2(224, 234)
-texture = ExtResource("6_71ce6")
+texture = ExtResource("5_e817k")
 
 [node name="Mano" type="Node2D" parent="CampoCartas" unique_id=1045286129]
 z_index = 1
 position = Vector2(0, 126)
 scale = Vector2(3.5, 1.968875)
 
-[node name="Mazo" parent="CampoCartas" unique_id=540842684 instance=ExtResource("2_xty2j")]
+[node name="Mazo" parent="CampoCartas" unique_id=540842684 instance=ExtResource("6_k5gr2")]
 visible = false
 position = Vector2(160, 68)
 
-[node name="Mazo2" parent="CampoCartas" unique_id=782563536 instance=ExtResource("2_xty2j")]
+[node name="Mazo2" parent="CampoCartas" unique_id=782563536 instance=ExtResource("6_k5gr2")]
 position = Vector2(-161, -67)
 rotation = -3.1415925
 
 [node name="Descarte" type="Sprite2D" parent="CampoCartas" unique_id=2096883942]
 visible = false
 position = Vector2(-161, 68)
-texture = ExtResource("3_gfcew")
+texture = ExtResource("3_fgx4m")
 
 [node name="Descarte2" type="Sprite2D" parent="CampoCartas" unique_id=997347860]
 visible = false
 position = Vector2(160, -68)
 rotation = 3.1415927
-texture = ExtResource("3_gfcew")
+texture = ExtResource("3_fgx4m")
 
 [node name="CartasJugador" type="Node2D" parent="CampoCartas" unique_id=1285479738]
 
 [node name="Carta1" type="Sprite2D" parent="CampoCartas/CartasJugador" unique_id=1982217459]
 visible = false
 position = Vector2(-74, 46)
-texture = ExtResource("3_gfcew")
+texture = ExtResource("3_fgx4m")
 
 [node name="Carta2" type="Sprite2D" parent="CampoCartas/CartasJugador" unique_id=1257183593]
 visible = false
 position = Vector2(1, 46)
-texture = ExtResource("3_gfcew")
+texture = ExtResource("3_fgx4m")
 
 [node name="Carta3" type="Sprite2D" parent="CampoCartas/CartasJugador" unique_id=1599134004]
 visible = false
 position = Vector2(71, 46)
-texture = ExtResource("3_gfcew")
+texture = ExtResource("3_fgx4m")
 
 [node name="CartasEnemigo" type="Node2D" parent="CampoCartas" unique_id=1989618205]
 
@@ -93,28 +98,28 @@ texture = ExtResource("3_gfcew")
 visible = false
 position = Vector2(71, -46)
 rotation = -3.1415925
-texture = ExtResource("3_gfcew")
+texture = ExtResource("3_fgx4m")
 
 [node name="Carta5" type="Sprite2D" parent="CampoCartas/CartasEnemigo" unique_id=639089567]
 visible = false
 position = Vector2(1, -46)
 rotation = -3.1415925
-texture = ExtResource("3_gfcew")
+texture = ExtResource("3_fgx4m")
 
 [node name="Carta6" type="Sprite2D" parent="CampoCartas/CartasEnemigo" unique_id=1039860170]
 visible = false
 position = Vector2(-74, -46)
 rotation = -3.1415925
-texture = ExtResource("3_gfcew")
+texture = ExtResource("3_fgx4m")
 
 [node name="MusicaFondo" type="AudioStreamPlayer2D" parent="." unique_id=735427863]
 visible = false
-stream = ExtResource("7_mu0do")
+stream = ExtResource("7_iikg4")
 attenuation = 8.0
 parameters/looping = true
 
 [node name="SonidoRomperCarta" type="AudioStreamPlayer2D" parent="." unique_id=1973842139]
-stream = ExtResource("8_4xi10")
+stream = ExtResource("8_p2mjs")
 
 [node name="SonidoJugarCarta" type="AudioStreamPlayer2D" parent="." unique_id=1062207297]
-stream = ExtResource("9_8ocnp")
+stream = ExtResource("9_cj0mm")
