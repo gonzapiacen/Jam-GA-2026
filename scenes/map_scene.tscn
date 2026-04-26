@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://capum1kkvsn3m"]
+
+[ext_resource type="PackedScene" uid="uid://bex1minhkbqp5" path="res://scenes/map.tscn" id="1_ne7uw"]
+[ext_resource type="PackedScene" uid="uid://lxtm7k8bdqr0" path="res://test/map_node.tscn" id="2_5m4q6"]
+
+[node name="MapScene" type="Node2D" unique_id=849957452]
+metadata/_edit_vertical_guides_ = [448.0]
+
+[node name="Map" parent="." unique_id=536333715 instance=ExtResource("1_ne7uw")]
+
+[node name="MapNode" parent="Map" unique_id=677776519 node_paths=PackedStringArray("connections", "map") instance=ExtResource("2_5m4q6")]
+position = Vector2(544, 320)
+connections = [NodePath("../MapNode2"), NodePath("../MapNode3")]
+map = NodePath("..")
+
+[node name="MapNode2" parent="Map" unique_id=1223561367 node_paths=PackedStringArray("connections", "map") instance=ExtResource("2_5m4q6")]
+position = Vector2(496, 272)
+level = 1
+connections = [NodePath("../MapNode4")]
+map = NodePath("..")
+active = true
+
+[node name="MapNode3" parent="Map" unique_id=176311760 node_paths=PackedStringArray("connections", "map") instance=ExtResource("2_5m4q6")]
+position = Vector2(592, 272)
+level = 1
+connections = [NodePath("../MapNode5"), NodePath("../MapNode6")]
+map = NodePath("..")
+active = true
+
+[node name="MapNode4" parent="Map" unique_id=1269179625 node_paths=PackedStringArray("connections", "map") instance=ExtResource("2_5m4q6")]
+position = Vector2(496, 208)
+level = 2
+connections = [NodePath("../MapNode7"), NodePath("../MapNode8")]
+map = NodePath("..")
+
+[node name="MapNode5" parent="Map" unique_id=480638866 node_paths=PackedStringArray("connections", "map") instance=ExtResource("2_5m4q6")]
+position = Vector2(568, 208)
+level = 2
+connections = [NodePath("../MapNode9")]
+map = NodePath("..")
+
+[node name="MapNode6" parent="Map" unique_id=1042691633 node_paths=PackedStringArray("connections", "map") instance=ExtResource("2_5m4q6")]
+position = Vector2(620, 208)
+level = 2
+connections = [NodePath("../MapNode9")]
+map = NodePath("..")
+
+[node name="MapNode7" parent="Map" unique_id=183504513 node_paths=PackedStringArray("connections", "map") instance=ExtResource("2_5m4q6")]
+position = Vector2(476, 144)
+level = 3
+connections = [NodePath("../MapNode10")]
+map = NodePath("..")
+
+[node name="MapNode8" parent="Map" unique_id=2074599524 node_paths=PackedStringArray("connections", "map") instance=ExtResource("2_5m4q6")]
+position = Vector2(520, 144)
+level = 3
+connections = [NodePath("../MapNode10")]
+map = NodePath("..")
+
+[node name="MapNode9" parent="Map" unique_id=549511748 node_paths=PackedStringArray("connections", "map") instance=ExtResource("2_5m4q6")]
+position = Vector2(592, 144)
+level = 3
+connections = [NodePath("../MapNode11")]
+map = NodePath("..")
+
+[node name="MapNode10" parent="Map" unique_id=87990635 node_paths=PackedStringArray("connections", "map") instance=ExtResource("2_5m4q6")]
+position = Vector2(496, 80)
+level = 4
+connections = [NodePath("../MapNode12")]
+map = NodePath("..")
+
+[node name="MapNode11" parent="Map" unique_id=1746703580 node_paths=PackedStringArray("connections", "map") instance=ExtResource("2_5m4q6")]
+position = Vector2(592, 80)
+level = 4
+connections = [NodePath("../MapNode12")]
+map = NodePath("..")
+
+[node name="MapNode12" parent="Map" unique_id=903761913 node_paths=PackedStringArray("map") instance=ExtResource("2_5m4q6")]
+position = Vector2(544, 48)
+level = 5
+map = NodePath("..")

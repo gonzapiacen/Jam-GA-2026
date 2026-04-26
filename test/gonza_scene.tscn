@@ -1,0 +1,171 @@
+[gd_scene format=3 uid="uid://df71g2rds7u11"]
+
+[ext_resource type="Script" uid="uid://1lxndmxtoq68" path="res://test/map_script.gd" id="1_7k1e8"]
+[ext_resource type="Texture2D" uid="uid://xc0fcpsm604i" path="res://icon.svg" id="1_idgwr"]
+[ext_resource type="Script" uid="uid://cl5g8c7xbu6i5" path="res://test/node.gd" id="3_tf2bs"]
+
+[node name="GonzaScene" type="Node2D" unique_id=1591293694]
+script = ExtResource("1_7k1e8")
+
+[node name="Locations" type="Node" parent="." unique_id=1141725688]
+
+[node name="Start" type="Sprite2D" parent="Locations" unique_id=82117226 node_paths=PackedStringArray("hijo1", "hijo2")]
+position = Vector2(544, 304)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_idgwr")
+script = ExtResource("3_tf2bs")
+hijo1 = NodePath("../Location1")
+hijo2 = NodePath("../Location2")
+
+[node name="Location1" type="Sprite2D" parent="Locations" unique_id=1067133300 node_paths=PackedStringArray("hijo1", "hijo2", "raiz")]
+position = Vector2(576, 240)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_idgwr")
+script = ExtResource("3_tf2bs")
+hijo1 = NodePath("../Location3")
+hijo2 = NodePath("../Location4")
+raiz = NodePath("../Start")
+
+[node name="Button" type="Button" parent="Locations/Location1" unique_id=1916077495]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = -64.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Location2" type="Sprite2D" parent="Locations" unique_id=226155021 node_paths=PackedStringArray("hijo1", "raiz")]
+position = Vector2(512, 240)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_idgwr")
+script = ExtResource("3_tf2bs")
+hijo1 = NodePath("../Location4")
+raiz = NodePath("../Start")
+
+[node name="Button" type="Button" parent="Locations/Location2" unique_id=1082578518]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = -64.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Location3" type="Sprite2D" parent="Locations" unique_id=48180635 node_paths=PackedStringArray("hijo1", "raiz")]
+position = Vector2(608, 176)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_idgwr")
+script = ExtResource("3_tf2bs")
+hijo1 = NodePath("../Rock")
+raiz = NodePath("../Start")
+
+[node name="Button" type="Button" parent="Locations/Location3" unique_id=42422912]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = -64.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+disabled = true
+
+[node name="Location4" type="Sprite2D" parent="Locations" unique_id=546017748 node_paths=PackedStringArray("hijo1", "raiz")]
+position = Vector2(544, 176)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_idgwr")
+script = ExtResource("3_tf2bs")
+hijo1 = NodePath("../Rock")
+raiz = NodePath("../Start")
+
+[node name="Button" type="Button" parent="Locations/Location4" unique_id=1102113881]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = -64.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+disabled = true
+
+[node name="Rock" type="Sprite2D" parent="Locations" unique_id=1010869841 node_paths=PackedStringArray("raiz")]
+position = Vector2(576, 112)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_idgwr")
+script = ExtResource("3_tf2bs")
+raiz = NodePath("../Start")
+
+[node name="Button" type="Button" parent="Locations/Rock" unique_id=1346128169]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = -64.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+disabled = true
+
+[node name="Node" type="Node" parent="." unique_id=1182272324]
+
+[node name="Path1" type="Sprite2D" parent="Node" unique_id=1940003330]
+position = Vector2(559.99994, 271.99997)
+rotation = 0.5235988
+scale = Vector2(0.03, 0.25)
+texture = ExtResource("1_idgwr")
+
+[node name="Path2" type="Sprite2D" parent="Node" unique_id=303861549]
+position = Vector2(528, 272)
+rotation = -0.5235988
+scale = Vector2(0.03, 0.25)
+texture = ExtResource("1_idgwr")
+
+[node name="Path3" type="Sprite2D" parent="Node" unique_id=1234017091]
+position = Vector2(528, 207.99998)
+rotation = 0.5235988
+scale = Vector2(0.03, 0.25)
+texture = ExtResource("1_idgwr")
+
+[node name="Path4" type="Sprite2D" parent="Node" unique_id=949731652]
+position = Vector2(592, 208)
+rotation = 0.5235988
+scale = Vector2(0.03, 0.25)
+texture = ExtResource("1_idgwr")
+
+[node name="Path5" type="Sprite2D" parent="Node" unique_id=1486414096]
+position = Vector2(560, 208.00003)
+rotation = -0.5235988
+scale = Vector2(0.03, 0.25)
+texture = ExtResource("1_idgwr")
+
+[node name="Path6" type="Sprite2D" parent="Node" unique_id=736556752]
+position = Vector2(596, 144)
+rotation = -0.5235988
+scale = Vector2(0.03, 0.25)
+texture = ExtResource("1_idgwr")
+
+[node name="Path7" type="Sprite2D" parent="Node" unique_id=902552182]
+position = Vector2(559.99994, 143.99998)
+rotation = 0.5235988
+scale = Vector2(0.03, 0.25)
+texture = ExtResource("1_idgwr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1854563124]
+position = Vector2(544, 180.00002)
+scale = Vector2(1.5, 2.8124998)
+texture = ExtResource("1_idgwr")
+
+[connection signal="pressed" from="Locations/Location1/Button" to="Locations/Location1" method="_on_button_pressed"]
+[connection signal="pressed" from="Locations/Location2/Button" to="Locations/Location2" method="_on_button_pressed"]
+[connection signal="pressed" from="Locations/Location3/Button" to="Locations/Location3" method="_on_button_pressed"]
+[connection signal="pressed" from="Locations/Location4/Button" to="Locations/Location4" method="_on_button_pressed"]
+[connection signal="pressed" from="Locations/Rock/Button" to="Locations/Rock" method="_on_button_pressed"]
