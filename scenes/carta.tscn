@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://dis815jg1ldj4"]
 
-[ext_resource type="Script" uid="uid://cd2jx4vdmu5ji" path="res://scenes/carta.gd" id="1_ywsyh"]
-[ext_resource type="Texture2D" uid="uid://ctp60vy51om4f" path="res://scenes/assets/texturas/frent_carta.png" id="2_rx7pn"]
-[ext_resource type="Texture2D" uid="uid://cvrlu0mc5m605" path="res://scenes/assets/texturas/iconos/icono_consumible.png" id="3_3p8e2"]
-[ext_resource type="FontFile" uid="uid://cenlao1rovtkx" path="res://scenes/assets/fonts/alagard.ttf" id="3_cc48w"]
-[ext_resource type="Texture2D" uid="uid://6hj6h5x6onmy" path="res://scenes/assets/texturas/dorso_cartas.png" id="3_rx7pn"]
-[ext_resource type="Texture2D" uid="uid://ct7wr85gghekj" path="res://scenes/assets/texturas/iconos/icono_curacion.png" id="4_txgwi"]
+[ext_resource type="Script" uid="uid://cd2jx4vdmu5ji" path="res://scripts/carta.gd" id="1_ywsyh"]
+[ext_resource type="Texture2D" uid="uid://ctp60vy51om4f" path="res://assets/texturas/frent_carta.png" id="2_rx7pn"]
+[ext_resource type="Texture2D" uid="uid://cvrlu0mc5m605" path="res://assets/texturas/iconos/icono_consumible.png" id="3_3p8e2"]
+[ext_resource type="FontFile" uid="uid://cenlao1rovtkx" path="res://assets/fonts/alagard.ttf" id="3_cc48w"]
+[ext_resource type="Texture2D" uid="uid://6hj6h5x6onmy" path="res://assets/texturas/dorso_cartas.png" id="3_rx7pn"]
+[ext_resource type="Texture2D" uid="uid://ct7wr85gghekj" path="res://assets/texturas/iconos/icono_curacion.png" id="4_txgwi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ywsyh"]
 size = Vector2(44, 74)
@@ -30,7 +30,7 @@ text = "Titulo"
 horizontal_alignment = 1
 
 [node name="Energia" type="Node2D" parent="Frente" unique_id=1812310512]
-position = Vector2(-16, -29.00003)
+position = Vector2(-15, -28.00003)
 scale = Vector2(1, 1.0000001)
 
 [node name="ValorEnergia" type="Label" parent="Frente/Energia" unique_id=1857645359]
@@ -39,7 +39,7 @@ offset_top = -6.500063
 offset_right = 11.151691
 offset_bottom = 5.499937
 theme_override_fonts/font = ExtResource("3_cc48w")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 12
 text = "8"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -53,11 +53,11 @@ texture = ExtResource("4_txgwi")
 
 [node name="ValorEfecto" type="Label" parent="Frente/Efecto" unique_id=1978812870]
 offset_left = -9.0
-offset_top = -7.000002
+offset_top = -6.000002
 offset_right = 12.151688
-offset_bottom = 4.999998
+offset_bottom = 5.999998
 theme_override_fonts/font = ExtResource("3_cc48w")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 12
 text = "8"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -72,19 +72,19 @@ shape = SubResource("RectangleShape2D_ywsyh")
 [node name="Consumible" type="Node2D" parent="Frente" unique_id=2011330551]
 
 [node name="IconoConsumible" type="Sprite2D" parent="Frente/Consumible" unique_id=938774331]
-position = Vector2(13.999999, 30.99997)
-scale = Vector2(0.013, 0.013)
+position = Vector2(13, 29.99997)
+scale = Vector2(0.018218754, 0.018218754)
 texture = ExtResource("3_3p8e2")
 
 [node name="Durabilidad" type="Node2D" parent="Frente" unique_id=811854076]
 
 [node name="ValorDurabilidad" type="Label" parent="Frente/Durabilidad" unique_id=1859095844]
 offset_left = -18.0
-offset_top = 26.99997
-offset_right = -13.0
-offset_bottom = 34.99997
+offset_top = 23.99997
+offset_right = -11.0
+offset_bottom = 35.99997
 theme_override_fonts/font = ExtResource("3_cc48w")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 12
 text = "8"
 
 [node name="Dorso" type="Sprite2D" parent="." unique_id=2053787691]

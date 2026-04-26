@@ -38,7 +38,8 @@ func _ready() -> void:
 	# MUSICA Y SONIDOS
 	
 	musica_de_fondo = $MusicaFondo
-	sonido_romper_carta = $RomperCarta
+	sonido_romper_carta = $SonidoRomperCarta
+	sonido_jugar_carta = $SonidoJugarCarta
 	
 	info_carta.hide()
 	mazo_jugador = mazo.instantiate()
@@ -98,8 +99,11 @@ func ocultarInfo() -> void:
 	info_carta.hide()
 
 func jugarCarta(carta: Carta) -> void:
-	if campo_jugador.size() != 3 :
+	if campo_jugador.size() == 3 :
+		print("Campo lleno")
 		return
 	
+	carta.position.x = -21 + (21 * campo_jugador.size())
+	carta.position.y = -40
 	campo_jugador.push_back(mano.pop_at(mano.find(carta)))
 	sonido_jugar_carta.play()

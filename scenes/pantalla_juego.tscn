@@ -13,7 +13,8 @@
 
 [node name="PantallaJuego" type="Node2D" unique_id=1014672054]
 script = ExtResource("1_8ocnp")
-metadata/_edit_horizontal_guides_ = [360.0]
+metadata/_edit_horizontal_guides_ = [360.0, 280.0]
+metadata/_edit_vertical_guides_ = [152.0]
 
 [node name="Fondo" type="Sprite2D" parent="." unique_id=2023025988]
 position = Vector2(224.00002, 54)
@@ -52,9 +53,27 @@ position = Vector2(224, 234)
 texture = ExtResource("5_e817k")
 
 [node name="Mano" type="Node2D" parent="CampoCartas" unique_id=1045286129]
-z_index = 1
+z_index = 2
 position = Vector2(0, 126)
 scale = Vector2(3.5, 1.968875)
+
+[node name="Carta1" type="Sprite2D" parent="CampoCartas/Mano" unique_id=1982217459]
+visible = false
+position = Vector2(-21, -40)
+scale = Vector2(0.28571427, 0.50790423)
+texture = ExtResource("3_fgx4m")
+
+[node name="Carta2" type="Sprite2D" parent="CampoCartas/Mano" unique_id=1257183593]
+visible = false
+position = Vector2(0.285717, -40.63234)
+scale = Vector2(0.28571427, 0.50790423)
+texture = ExtResource("3_fgx4m")
+
+[node name="Carta3" type="Sprite2D" parent="CampoCartas/Mano" unique_id=1599134004]
+visible = false
+position = Vector2(20.28571, -40.63234)
+scale = Vector2(0.28571427, 0.50790423)
+texture = ExtResource("3_fgx4m")
 
 [node name="Mazo" parent="CampoCartas" unique_id=540842684 instance=ExtResource("6_k5gr2")]
 visible = false
@@ -76,21 +95,6 @@ rotation = 3.1415927
 texture = ExtResource("3_fgx4m")
 
 [node name="CartasJugador" type="Node2D" parent="CampoCartas" unique_id=1285479738]
-
-[node name="Carta1" type="Sprite2D" parent="CampoCartas/CartasJugador" unique_id=1982217459]
-visible = false
-position = Vector2(-74, 46)
-texture = ExtResource("3_fgx4m")
-
-[node name="Carta2" type="Sprite2D" parent="CampoCartas/CartasJugador" unique_id=1257183593]
-visible = false
-position = Vector2(1, 46)
-texture = ExtResource("3_fgx4m")
-
-[node name="Carta3" type="Sprite2D" parent="CampoCartas/CartasJugador" unique_id=1599134004]
-visible = false
-position = Vector2(71, 46)
-texture = ExtResource("3_fgx4m")
 
 [node name="CartasEnemigo" type="Node2D" parent="CampoCartas" unique_id=1989618205]
 

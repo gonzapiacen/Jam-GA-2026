@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://do0mh3rukqw4a"]
 
-[ext_resource type="Script" uid="uid://dfg3llnx0yen2" path="res://scenes/mazo.gd" id="1_ip52q"]
-[ext_resource type="Texture2D" uid="uid://6hj6h5x6onmy" path="res://scenes/assets/texturas/dorso_cartas.png" id="2_ip52q"]
-[ext_resource type="AudioStream" uid="uid://cge41cfpacb5a" path="res://scenes/assets/sonidos/sacar_carta_del_mazo.ogg" id="3_8hg15"]
+[ext_resource type="Script" uid="uid://dfg3llnx0yen2" path="res://scripts/mazo.gd" id="1_ip52q"]
+[ext_resource type="Texture2D" uid="uid://6hj6h5x6onmy" path="res://assets/texturas/dorso_cartas.png" id="2_ip52q"]
+[ext_resource type="AudioStream" uid="uid://cge41cfpacb5a" path="res://assets/sonidos/sacar_carta_del_mazo.ogg" id="3_8hg15"]
 
 [node name="Mazo" type="Node2D" unique_id=540842684]
 script = ExtResource("1_ip52q")

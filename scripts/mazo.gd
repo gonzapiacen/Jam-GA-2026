@@ -21,6 +21,12 @@ func _ready() -> void:
 		nuevaCarta = carta.instantiate()
 		
 		nuevaCarta.energia = ((i % 9) + 1)
+		#nuevaCarta.energiaG.text = str(((i % 9) + 1))
+		nuevaCarta.efecto = ((i+1 % 9) + 1)
+		#nuevaCarta.efectoG.text = str(((i+1 % 9) + 1))
+		nuevaCarta.tipoEfecto = ((i+2 % 9) + 1)
+		#nuevaCarta.tipoEfectoG.text = str(((i+2 % 9) + 1))
+		
 		monto.append(nuevaCarta)
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
