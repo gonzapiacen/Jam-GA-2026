@@ -26,6 +26,10 @@ var tipoEfectoG: Sprite2D
 var enCampo: bool
 var esConsumible: bool
 
+var enDescarte: bool
+var enemy: Enemy
+var player: Player
+
 signal ver_info
 signal ocultar_info
 signal jugar_carta
@@ -47,6 +51,14 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func jugar() -> void:
+	if tipoEfecto == 0:
+		enemy.damage -= efecto
+	else: if tipoEfecto == 1:
+		player.modified_health(-efecto)
+	else:
+		player.modified_energy(efecto)
 
 func _on_area_2d_mouse_entered() -> void:
 

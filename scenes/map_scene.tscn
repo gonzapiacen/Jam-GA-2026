@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://capum1kkvsn3m"]
 
+[ext_resource type="Texture2D" uid="uid://bwwbllkrypvs" path="res://assets/texturas/mapa_vacio.png" id="1_5m4q6"]
 [ext_resource type="PackedScene" uid="uid://bex1minhkbqp5" path="res://scenes/map.tscn" id="1_ne7uw"]
 [ext_resource type="PackedScene" uid="uid://lxtm7k8bdqr0" path="res://test/map_node.tscn" id="2_5m4q6"]
 
 [node name="MapScene" type="Node2D" unique_id=849957452]
 metadata/_edit_vertical_guides_ = [448.0]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1989120802]
+position = Vector2(544, 180)
+texture = ExtResource("1_5m4q6")
 
 [node name="Map" parent="." unique_id=536333715 instance=ExtResource("1_ne7uw")]
 
@@ -79,5 +84,3 @@ map = NodePath("..")
 position = Vector2(544, 48)
 level = 5
 map = NodePath("..")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1989120802]

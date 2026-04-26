@@ -7,6 +7,9 @@ class_name Enemy
 @export var defense: int
 @export var player: Player
 
+func take_turn() -> void:
+	attack()
+
 func attack() -> void:
 	player.modified_health(-damage)
 
