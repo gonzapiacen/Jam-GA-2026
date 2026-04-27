@@ -11,10 +11,64 @@
 [ext_resource type="PackedScene" uid="uid://capum1kkvsn3m" path="res://scenes/map_scene.tscn" id="9_8ocnp"]
 [ext_resource type="AudioStream" uid="uid://tgv0rae3k3qh" path="res://assets/sonidos/poner_carta_en_campo.ogg" id="9_cj0mm"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_3oebh"]
+font = ExtResource("4_cop7a")
+
 [node name="PantallaJuego" type="Node2D" unique_id=1014672054]
 script = ExtResource("1_8ocnp")
 metadata/_edit_horizontal_guides_ = [360.0, 280.0]
 metadata/_edit_vertical_guides_ = [152.0]
+
+[node name="UI" type="Node2D" parent="." unique_id=1764428223]
+z_index = 20
+
+[node name="HP" type="Label" parent="UI" unique_id=1462185738]
+offset_left = 274.0
+offset_top = 333.0
+offset_right = 314.0
+offset_bottom = 356.0
+text = "asdsd"
+label_settings = SubResource("LabelSettings_3oebh")
+
+[node name="HP2" type="Label" parent="UI" unique_id=1858084590]
+offset_left = 248.0
+offset_top = 333.0
+offset_right = 288.0
+offset_bottom = 356.0
+text = "HP:"
+label_settings = SubResource("LabelSettings_3oebh")
+
+[node name="ENG" type="Label" parent="UI" unique_id=1698655519]
+offset_left = 131.0
+offset_top = 333.0
+offset_right = 172.0
+offset_bottom = 356.0
+text = "adasd"
+label_settings = SubResource("LabelSettings_3oebh")
+
+[node name="ENG2" type="Label" parent="UI" unique_id=719542802]
+offset_left = 106.0
+offset_top = 333.0
+offset_right = 147.0
+offset_bottom = 356.0
+text = "AP:"
+label_settings = SubResource("LabelSettings_3oebh")
+
+[node name="EnemyHP" type="Label" parent="UI" unique_id=150051665]
+offset_left = 220.0
+offset_top = 112.0
+offset_right = 260.0
+offset_bottom = 135.0
+text = "sdfs"
+label_settings = SubResource("LabelSettings_3oebh")
+
+[node name="EnemyHP2" type="Label" parent="UI" unique_id=1612057625]
+offset_left = 193.0
+offset_top = 112.0
+offset_right = 233.0
+offset_bottom = 135.0
+text = "HP:"
+label_settings = SubResource("LabelSettings_3oebh")
 
 [node name="Fondo" type="Sprite2D" parent="." unique_id=2023025988]
 position = Vector2(224.00002, 54)

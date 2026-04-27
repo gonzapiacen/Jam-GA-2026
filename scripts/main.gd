@@ -1,6 +1,5 @@
 extends Node2D
 
-var mano: Array[Carta] = []
 var campo_jugador: Array[Carta] = []
 var campo_enemigo: Array[Carta] = []
 
@@ -22,6 +21,7 @@ var mazo_jugador: Mazo
 
 var mano_nodo: Node2D
 var descarte_nodo: Node2D
+var campo_nodo: Node2D
 
 var turno_jugador: bool = true
 
@@ -32,6 +32,11 @@ var descarte: Array[Carta] = []
 
 var player_actual: Player
 var enemigo_actual: Enemy
+
+@onready var hp_label: Label = $UI/HP
+@onready var eng_label: Label = $UI/ENG
+@onready var enemy_hp_label: Label = $UI/EnemyHP
+
 
 var boton_pasar_turno: Button
 
@@ -48,6 +53,7 @@ func _ready() -> void:
 	mazo_jugador = $CampoCartas/Mazo
 	mano_nodo = $CampoCartas/Mano
 	descarte_nodo = $CampoCartas/Descarte
+	campo_nodo = $CampoCartas/CartasJugador
 	
 	# MUSICA Y SONIDOS
 	
@@ -62,12 +68,15 @@ func _ready() -> void:
 	add_child(mazo_jugador)
 	
 	player_actual = player.instantiate()
+	hp_label.text =  str(player_actual.health)
+	eng_label.text = str(player_actual.energy)
+	
 	
 	#player_actual.health = 20
 	#player_actual.energy = 10
 	
 	enemigo_actual = enemy.instantiate()
-	
+	enemy_hp_label.text = str(enemigo_actual.health)
 	enemigo_actual.player = player_actual
 	
 	for i in range(mazo_jugador.monto.size()):
@@ -125,18 +134,20 @@ func cambiarTurno() -> void:
 func ejecutarTurnoEnemigo():
 	print("Enemigo ha atacado")
 	enemigo_actual.attack()
+	hp_label.text = str(player_actual.health)
 	print("Vida personaje: ", player_actual.health)
 	print("Vida enemigo: ", enemigo_actual.health)
 	
 func enviarCartasManoADescarte() -> void:
-	descarte += mano_jugador
 	for hijo in mano_nodo.get_children():
+		campo_jugador.erase(hijo)
+		descarte.append(hijo)
+		print(campo_jugador.size())
 		hijo.reparent(descarte_nodo,false)
 		hijo.position.x = 0
 		hijo.position.y = 0
 		hijo.scale.x = 1
 		hijo.scale.y = 1
-		
 func eliminarCarta(carta: Carta) -> void:
 	sonido_romper_carta.play()
 	carta.queue_free()
@@ -157,5 +168,12 @@ func jugarCarta(carta: Carta) -> void:
 	
 	carta.position.x = -21 + (21 * campo_jugador.size())
 	carta.position.y = -40
-	campo_jugador.push_back(mano.pop_at(mano.find(carta)))
+	campo_jugador.push_back(mano_jugador.pop_at(mano_jugador.find(carta)))
 	sonido_jugar_carta.play()
+	carta.jugar(player_actual,enemigo_actual)
+	hp_label.text = str(player_actual.health)
+	eng_label.text = str(player_actual.energy)
+	enemy_hp_label.text = str(enemigo_actual.health)
+	
+	#if enemigo_actual.health <= 0:
+		

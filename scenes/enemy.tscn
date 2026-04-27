@@ -4,4 +4,5 @@
 
 [node name="Enemy" type="Node2D" unique_id=1991253028]
 script = ExtResource("1_7p1mj")
+health = 10
 damage = 3

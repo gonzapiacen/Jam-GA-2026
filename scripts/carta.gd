@@ -27,8 +27,6 @@ var enCampo: bool
 var esConsumible: bool
 
 var enDescarte: bool
-var enemy: Enemy
-var player: Player
 
 signal ver_info
 signal ocultar_info
@@ -52,11 +50,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func jugar() -> void:
+func jugar(player: Player,enemy: Enemy) -> void:
+	print(tipoEfecto)
 	if tipoEfecto == 0: #dano
-		enemy.damage -= efecto
+		enemy.health -= efecto
 	else: if tipoEfecto == 1: #vida
-		player.modified_health(-efecto)
+		player.modified_health(efecto)
 	else: # energia
 		player.modified_energy(efecto)
 
