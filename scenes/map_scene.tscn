@@ -3,6 +3,14 @@
 [ext_resource type="Texture2D" uid="uid://bwwbllkrypvs" path="res://assets/texturas/mapa_vacio.png" id="1_5m4q6"]
 [ext_resource type="PackedScene" uid="uid://bex1minhkbqp5" path="res://scenes/map.tscn" id="1_ne7uw"]
 [ext_resource type="PackedScene" uid="uid://lxtm7k8bdqr0" path="res://test/map_node.tscn" id="2_5m4q6"]
+[ext_resource type="Texture2D" uid="uid://dusqeharcqojl" path="res://assets/texturas/Botones_Mapa/boton1.png" id="4_vlip3"]
+[ext_resource type="Texture2D" uid="uid://c1rgogguq2fib" path="res://assets/texturas/Botones_Mapa/boton6.png" id="5_f0c3g"]
+[ext_resource type="Texture2D" uid="uid://gvn2bn3nyonk" path="res://assets/texturas/Botones_Mapa/boton5.png" id="6_od1u7"]
+[ext_resource type="Texture2D" uid="uid://djakysvn1err4" path="res://assets/texturas/Botones_Mapa/boton2.png" id="7_l1wjf"]
+[ext_resource type="Texture2D" uid="uid://bq27dchd2h6ww" path="res://assets/texturas/Botones_Mapa/boton3.png" id="8_tk4s2"]
+[ext_resource type="Texture2D" uid="uid://sgdmrpsxt73m" path="res://assets/texturas/Botones_Mapa/boton4.png" id="9_xb8oc"]
+[ext_resource type="Texture2D" uid="uid://cxn061ied6p0x" path="res://assets/texturas/Botones_Mapa/boton8.png" id="10_c25he"]
+[ext_resource type="Texture2D" uid="uid://j38x5t0aagmu" path="res://assets/texturas/Botones_Mapa/boton7.png" id="11_rj0op"]
 
 [node name="MapScene" type="Node2D" unique_id=849957452]
 metadata/_edit_vertical_guides_ = [448.0]
@@ -17,6 +25,7 @@ texture = ExtResource("1_5m4q6")
 position = Vector2(544, 320)
 connections = [NodePath("../MapNode2"), NodePath("../MapNode3")]
 map = NodePath("..")
+image = ExtResource("4_vlip3")
 
 [node name="MapNode2" parent="Map" unique_id=1223561367 node_paths=PackedStringArray("connections", "map") instance=ExtResource("2_5m4q6")]
 position = Vector2(496, 272)
@@ -24,6 +33,7 @@ level = 1
 connections = [NodePath("../MapNode4")]
 map = NodePath("..")
 active = true
+image = ExtResource("5_f0c3g")
 
 [node name="MapNode3" parent="Map" unique_id=176311760 node_paths=PackedStringArray("connections", "map") instance=ExtResource("2_5m4q6")]
 position = Vector2(592, 272)
@@ -31,56 +41,66 @@ level = 1
 connections = [NodePath("../MapNode5"), NodePath("../MapNode6")]
 map = NodePath("..")
 active = true
+image = ExtResource("6_od1u7")
 
 [node name="MapNode4" parent="Map" unique_id=1269179625 node_paths=PackedStringArray("connections", "map") instance=ExtResource("2_5m4q6")]
 position = Vector2(496, 208)
 level = 2
 connections = [NodePath("../MapNode7"), NodePath("../MapNode8")]
 map = NodePath("..")
+image = ExtResource("7_l1wjf")
 
 [node name="MapNode5" parent="Map" unique_id=480638866 node_paths=PackedStringArray("connections", "map") instance=ExtResource("2_5m4q6")]
 position = Vector2(568, 208)
 level = 2
 connections = [NodePath("../MapNode9")]
 map = NodePath("..")
+image = ExtResource("8_tk4s2")
 
 [node name="MapNode6" parent="Map" unique_id=1042691633 node_paths=PackedStringArray("connections", "map") instance=ExtResource("2_5m4q6")]
 position = Vector2(620, 208)
 level = 2
 connections = [NodePath("../MapNode9")]
 map = NodePath("..")
+image = ExtResource("9_xb8oc")
 
 [node name="MapNode7" parent="Map" unique_id=183504513 node_paths=PackedStringArray("connections", "map") instance=ExtResource("2_5m4q6")]
 position = Vector2(476, 144)
 level = 3
 connections = [NodePath("../MapNode10")]
 map = NodePath("..")
+image = ExtResource("10_c25he")
 
 [node name="MapNode8" parent="Map" unique_id=2074599524 node_paths=PackedStringArray("connections", "map") instance=ExtResource("2_5m4q6")]
 position = Vector2(520, 144)
 level = 3
 connections = [NodePath("../MapNode10")]
 map = NodePath("..")
+image = ExtResource("10_c25he")
 
 [node name="MapNode9" parent="Map" unique_id=549511748 node_paths=PackedStringArray("connections", "map") instance=ExtResource("2_5m4q6")]
 position = Vector2(592, 144)
 level = 3
 connections = [NodePath("../MapNode11")]
 map = NodePath("..")
+image = ExtResource("10_c25he")
 
 [node name="MapNode10" parent="Map" unique_id=87990635 node_paths=PackedStringArray("connections", "map") instance=ExtResource("2_5m4q6")]
 position = Vector2(496, 80)
 level = 4
 connections = [NodePath("../MapNode12")]
 map = NodePath("..")
+image = ExtResource("10_c25he")
 
 [node name="MapNode11" parent="Map" unique_id=1746703580 node_paths=PackedStringArray("connections", "map") instance=ExtResource("2_5m4q6")]
 position = Vector2(592, 80)
 level = 4
 connections = [NodePath("../MapNode12")]
 map = NodePath("..")
+image = ExtResource("10_c25he")
 
 [node name="MapNode12" parent="Map" unique_id=903761913 node_paths=PackedStringArray("map") instance=ExtResource("2_5m4q6")]
 position = Vector2(544, 48)
 level = 5
 map = NodePath("..")
+image = ExtResource("11_rj0op")

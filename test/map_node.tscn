@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://lxtm7k8bdqr0"]
 
 [ext_resource type="Script" uid="uid://cht8q5isvhn3y" path="res://scripts/map_node.gd" id="1_whnn0"]
-[ext_resource type="Texture2D" uid="uid://xc0fcpsm604i" path="res://icon.svg" id="2_0xswi"]
+[ext_resource type="Texture2D" uid="uid://dusqeharcqojl" path="res://assets/texturas/Botones_Mapa/boton1.png" id="2_5opum"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5opum"]
 
 [node name="MapNode" type="Node2D" unique_id=677776519 node_paths=PackedStringArray("button")]
 script = ExtResource("1_whnn0")
@@ -9,8 +11,7 @@ button = NodePath("Button")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1341799903]
 position = Vector2(9.536743e-07, -9.536743e-07)
-scale = Vector2(0.24999999, 0.24999999)
-texture = ExtResource("2_0xswi")
+texture = ExtResource("2_5opum")
 
 [node name="Button" type="Button" parent="." unique_id=494408993]
 anchors_preset = 15
@@ -22,6 +23,7 @@ offset_right = 16.0
 offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5opum")
 disabled = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

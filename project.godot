@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="JamJG2026"
+config/name="Gregorio Alvarez y La Piedra Encantada"
+run/main_scene="uid://ui1pbbe13607"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

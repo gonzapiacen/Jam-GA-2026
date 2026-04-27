@@ -8,9 +8,11 @@ class_name MapNode
 @export var button: Button
 @export var map: Map
 @export var active: bool
+@export var image: Texture
 
 func _ready() -> void:
 	button.disabled = !active
+	(self.get_child(0) as Sprite2D).texture = image
 
 func _activate_sons() -> void:
 	for son in range(connections.size()):

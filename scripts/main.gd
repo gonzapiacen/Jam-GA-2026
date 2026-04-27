@@ -175,5 +175,5 @@ func jugarCarta(carta: Carta) -> void:
 	eng_label.text = str(player_actual.energy)
 	enemy_hp_label.text = str(enemigo_actual.health)
 	
-	#if enemigo_actual.health <= 0:
-		
+	if enemigo_actual.health <= 0:
+		get_tree().change_scene_to_file("res://scenes/creditos.tscn")

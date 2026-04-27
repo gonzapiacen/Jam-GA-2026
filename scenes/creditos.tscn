@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://mbfm4sw3c111"]
+
+[ext_resource type="Texture2D" uid="uid://c6eqslhxlug3d" path="res://assets/texturas/iconos/Volver.png" id="1_6yhot"]
+[ext_resource type="Script" uid="uid://bfpe0q6jtbpr6" path="res://scenes/creditos.gd" id="1_jddgq"]
+[ext_resource type="Texture2D" uid="uid://lm8m3x4osrhe" path="res://assets/texturas/Fondos/menu_Creditos.png" id="1_spoww"]
+
+[node name="Creditos" type="Control" unique_id=213731317]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jddgq")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1711881072]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_spoww")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=924035499]
+z_index = 1
+layout_mode = 0
+offset_left = 524.0
+offset_top = 300.0
+offset_right = 598.0
+offset_bottom = 340.0
+texture_normal = ExtResource("1_6yhot")
+texture_pressed = ExtResource("1_6yhot")
+texture_hover = ExtResource("1_6yhot")
+texture_disabled = ExtResource("1_6yhot")
+texture_focused = ExtResource("1_6yhot")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cdhxocl5or8ev"]
 
 [ext_resource type="Script" uid="uid://belqeeg6egakk" path="res://scripts/main.gd" id="1_8ocnp"]
-[ext_resource type="Texture2D" uid="uid://xc0fcpsm604i" path="res://icon.svg" id="2_3oebh"]
+[ext_resource type="Texture2D" uid="uid://dx53us5sswgvd" path="res://assets/texturas/fondo_Bosque.png" id="3_3oebh"]
 [ext_resource type="Texture2D" uid="uid://ctp60vy51om4f" path="res://assets/texturas/frent_carta.png" id="3_fgx4m"]
 [ext_resource type="FontFile" uid="uid://cenlao1rovtkx" path="res://assets/fonts/alagard.ttf" id="4_cop7a"]
 [ext_resource type="Texture2D" uid="uid://bmsqh3yvvorov" path="res://assets/texturas/mesaCartas.png" id="5_e817k"]
@@ -72,16 +72,15 @@ label_settings = SubResource("LabelSettings_3oebh")
 
 [node name="Fondo" type="Sprite2D" parent="." unique_id=2023025988]
 position = Vector2(224.00002, 54)
-scale = Vector2(3.5, 0.844)
-texture = ExtResource("2_3oebh")
+texture = ExtResource("3_3oebh")
 
 [node name="Mapa" type="Sprite2D" parent="." unique_id=1542838033]
 position = Vector2(544, 180.004)
 scale = Vector2(1.5000001, 2.8125622)
-texture = ExtResource("2_3oebh")
 
 [node name="InfoCarta" type="Node2D" parent="Mapa" unique_id=1860270056]
 visible = false
+z_index = 6
 
 [node name="Imagen" type="Sprite2D" parent="Mapa/InfoCarta" unique_id=422211542]
 position = Vector2(0, -20.623188)
