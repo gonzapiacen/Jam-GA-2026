@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://cdhxocl5or8ev"]
+
+[ext_resource type="Script" uid="uid://q2xke1j7k4gj" path="res://scripts/juego.gd" id="1_bpkdb"]
+[ext_resource type="FontFile" uid="uid://cenlao1rovtkx" path="res://assets/fonts/alagard.ttf" id="2_ae6e5"]
+[ext_resource type="Texture2D" uid="uid://dx53us5sswgvd" path="res://assets/texturas/fondo_Bosque.png" id="3_y8n3i"]
+[ext_resource type="Texture2D" uid="uid://ctp60vy51om4f" path="res://assets/texturas/frent_carta.png" id="4_pncoq"]
+[ext_resource type="PackedScene" uid="uid://capum1kkvsn3m" path="res://scenes/map_scene.tscn" id="5_d7syh"]
+[ext_resource type="Texture2D" uid="uid://bmsqh3yvvorov" path="res://assets/texturas/mesaCartas.png" id="6_py3uc"]
+[ext_resource type="PackedScene" uid="uid://do0mh3rukqw4a" path="res://scenes/mazo.tscn" id="7_c173r"]
+[ext_resource type="AudioStream" uid="uid://dldlu0u6ae8ta" path="res://assets/musica/cancion_1.ogg" id="8_d0608"]
+[ext_resource type="AudioStream" uid="uid://bws86hpu5wjnv" path="res://assets/sonidos/romper_carta.ogg" id="9_spu22"]
+[ext_resource type="AudioStream" uid="uid://tgv0rae3k3qh" path="res://assets/sonidos/poner_carta_en_campo.ogg" id="10_skotl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3oebh"]
+font = ExtResource("2_ae6e5")
+
+[node name="Juego" type="Node2D" unique_id=1014672054]
+script = ExtResource("1_bpkdb")
+metadata/_edit_horizontal_guides_ = [356.0, 234.0, 167.0, 302.0, 188.0, 280.0]
+metadata/_edit_vertical_guides_ = [224.0, 63.0, 384.0, 295.0]
+
+[node name="UI" type="Node2D" parent="." unique_id=1764428223]
+visible = false
+z_index = 20
+
+[node name="HP" type="Label" parent="UI" unique_id=1462185738]
+offset_left = 274.0
+offset_top = 333.0
+offset_right = 314.0
+offset_bottom = 356.0
+text = "asdsd"
+label_settings = SubResource("LabelSettings_3oebh")
+
+[node name="HP2" type="Label" parent="UI" unique_id=1858084590]
+offset_left = 248.0
+offset_top = 333.0
+offset_right = 288.0
+offset_bottom = 356.0
+text = "HP:"
+label_settings = SubResource("LabelSettings_3oebh")
+
+[node name="ENG" type="Label" parent="UI" unique_id=1698655519]
+offset_left = 131.0
+offset_top = 333.0
+offset_right = 172.0
+offset_bottom = 356.0
+text = "adasd"
+label_settings = SubResource("LabelSettings_3oebh")
+
+[node name="ENG2" type="Label" parent="UI" unique_id=719542802]
+offset_left = 106.0
+offset_top = 333.0
+offset_right = 147.0
+offset_bottom = 356.0
+text = "AP:"
+label_settings = SubResource("LabelSettings_3oebh")
+
+[node name="EnemyHP" type="Label" parent="UI" unique_id=150051665]
+offset_left = 220.0
+offset_top = 112.0
+offset_right = 260.0
+offset_bottom = 135.0
+text = "sdfs"
+label_settings = SubResource("LabelSettings_3oebh")
+
+[node name="EnemyHP2" type="Label" parent="UI" unique_id=1612057625]
+offset_left = 193.0
+offset_top = 112.0
+offset_right = 233.0
+offset_bottom = 135.0
+text = "HP:"
+label_settings = SubResource("LabelSettings_3oebh")
+
+[node name="Enemigo" type="Node2D" parent="." unique_id=1989618205]
+position = Vector2(224, 108)
+
+[node name="Campo" type="Node2D" parent="Enemigo" unique_id=1004144981]
+position = Vector2(0, 80)
+
+[node name="Carta" type="Node2D" parent="Enemigo" unique_id=1175812359]
+position = Vector2(-161, 59)
+
+[node name="Jugador" type="Node2D" parent="." unique_id=1699363674]
+position = Vector2(224, 360)
+
+[node name="Mano" type="Node2D" parent="Jugador" unique_id=1045286129]
+z_index = 2
+
+[node name="Mazo" parent="Jugador" unique_id=540842684 instance=ExtResource("7_c173r")]
+position = Vector2(160, -58)
+
+[node name="Descarte" type="Node2D" parent="Jugador" unique_id=1172116759]
+position = Vector2(-161, -58)
+
+[node name="Campo" type="Node2D" parent="Jugador" unique_id=1285479738]
+position = Vector2(0, -80)
+
+[node name="Fondo" type="Sprite2D" parent="." unique_id=2023025988]
+position = Vector2(224.00002, 54)
+texture = ExtResource("3_y8n3i")
+
+[node name="Mapa" type="Sprite2D" parent="." unique_id=1542838033]
+position = Vector2(544, 180)
+scale = Vector2(1.5000001, 2.8125622)
+
+[node name="InfoCarta" type="Node2D" parent="Mapa" unique_id=1860270056]
+visible = false
+z_index = 6
+
+[node name="Imagen" type="Sprite2D" parent="Mapa/InfoCarta" unique_id=422211542]
+position = Vector2(0, -20.623188)
+texture = ExtResource("4_pncoq")
+
+[node name="Info" type="Label" parent="Mapa/InfoCarta" unique_id=2110359957]
+offset_left = -53.33333
+offset_top = 21.33144
+offset_right = 53.33333
+offset_bottom = 55.464024
+theme_override_fonts/font = ExtResource("2_ae6e5")
+theme_override_font_sizes/font_size = 8
+text = "Información de la carta que informa información informativa"
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MapScene" parent="Mapa" unique_id=849957452 instance=ExtResource("5_d7syh")]
+position = Vector2(-362.66666, -64.00001)
+scale = Vector2(0.6666666, 0.3555477)
+
+[node name="CampoCartas" type="Sprite2D" parent="." unique_id=1759704466]
+position = Vector2(224, 234)
+texture = ExtResource("6_py3uc")
+
+[node name="PasarTurno" type="Button" parent="CampoCartas" unique_id=1799541714]
+offset_left = 143.0
+offset_top = -22.0
+offset_right = 181.0
+offset_bottom = -1.0
+theme_override_fonts/font = ExtResource("2_ae6e5")
+theme_override_font_sizes/font_size = 12
+text = "Pasar"
+
+[node name="MusicaFondo" type="AudioStreamPlayer2D" parent="." unique_id=735427863]
+visible = false
+stream = ExtResource("8_d0608")
+attenuation = 8.0
+parameters/looping = true
+
+[node name="SonidoRomperCarta" type="AudioStreamPlayer2D" parent="." unique_id=1973842139]
+stream = ExtResource("9_spu22")
+
+[node name="SonidoJugarCarta" type="AudioStreamPlayer2D" parent="." unique_id=1062207297]
+stream = ExtResource("10_skotl")
+
+[connection signal="pressed" from="CampoCartas/PasarTurno" to="." method="_on_pasar_turno_pressed"]

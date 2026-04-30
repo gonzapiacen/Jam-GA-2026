@@ -1,49 +1,40 @@
-extends Node2D
+extends Resource
 
 class_name Mazo
-var cantCartas: Label
 
-var carta = preload("res://scenes/carta.tscn")
-var nuevaCarta: Carta
-var sonido_robo_carta: AudioStreamPlayer2D
-var sonido_carta_en_campo: AudioStreamPlayer2D
+@export var cantidad_de_cartas: int = 20
 
-var monto: Array[Carta] = []
+var cartas: Array[Carta] = []
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	sonido_robo_carta = $RoboCarta
-	sonido_carta_en_campo = $RoboCarta
-	cantCartas = $CantidadCartas/Valor
-	cantCartas.text = "20"
-	
-	for i in range (cantCartas.text.to_int()):
-		nuevaCarta = carta.instantiate()
-		
-		nuevaCarta.energia = (((i % 9)) + 1)
-		#nuevaCarta.energiaG.text = str(((i % 9) + 1))
-		nuevaCarta.efecto = (((i+1) % 9) + 1)
-		#nuevaCarta.efectoG.text = str(((i+1 % 9) + 1))
-		nuevaCarta.tipoEfecto = ((i+2) % 3)
-		#nuevaCarta.tipoEfectoG.text = str(((i+2 % 9) + 1))
-		
-		monto.append(nuevaCarta)
-		
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func inicializar() -> void:
+	for i in range (cantidad_de_cartas):
+		cartas.push_back(_crear_carta())
 
-func robarCarta() -> Carta:
-	sonido_robo_carta.play()
-	cantCartas.text = str(cantCartas.text.to_int()-1)
-	var pos = randi()%monto.size()
-	var carta = monto[pos]
-	monto.pop_at(pos)
-	return carta
-	#$CantidadCartas/Valor.text = str(cantCartas)
+	cartas.shuffle()
 	
+func _crear_carta() -> Carta:
+	var nueva_carta
+	nueva_carta = Carta.new()
+	nueva_carta.energia = randi() % 9
+	nueva_carta.efecto = ((randi() % 9) + 1)
+	nueva_carta.tipo_de_efecto = randi() % 3
+	nueva_carta.es_consumible = randi() % 2
+	nueva_carta.durabilidad = ((randi() % 9) + 1)
+	
+	return nueva_carta
 
-func anadirCarta() -> void:
-	sonido_robo_carta.play()
-	cantCartas.text = str(cantCartas.text.to_int()+1)
-	monto.append(carta.instantiate())
+func robar_carta() -> Carta:
+	if cartas.is_empty():
+		return null
+	
+	return cartas.pop_back()
+
+func anadir_carta(nueva_carta: Carta) -> void:
+	cartas.push_back(nueva_carta)
+	cartas.shuffle()
+
+"""
+ESTO PRECARGA EL RECURSO CARTA SIN NECESIDAD DE HACERLO POR CODIGO (SOLO PARA REPETICIONES)
+mazo.append(preload("res://cartas/carta_hielo.tres"))
+"""
