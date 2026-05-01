@@ -1,8 +1,9 @@
+@abstract
 extends Node
 class_name Comportamiento
 
-func agresivo() -> void:
-	pass
+var estado
 
-func defensivo() -> void:
-	pass
+@abstract func ejecutar_estado() -> void
+
+@abstract func avance_fsm() -> void
