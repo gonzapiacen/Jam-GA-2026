@@ -8,5 +8,4 @@ func serializar() -> String:
 
 func activar():
 	super()
-	# de alguna manera esperar a que el controlador seleccione un elemento
-
+	# TODO de alguna manera esperar a que el controlador seleccione un elemento
