@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://do0mh3rukqw4a"]
 
+[ext_resource type="Script" uid="uid://bmvdykpm0emc3" path="res://scenes/mazo_node.gd" id="1_8hg15"]
 [ext_resource type="Texture2D" uid="uid://6hj6h5x6onmy" path="res://assets/texturas/dorso_cartas.png" id="2_ip52q"]
 [ext_resource type="FontFile" uid="uid://cenlao1rovtkx" path="res://assets/fonts/alagard.ttf" id="3_8hg15"]
 
@@ -7,6 +8,7 @@
 font = ExtResource("3_8hg15")
 
 [node name="Mazo" type="Node2D" unique_id=1991683831]
+script = ExtResource("1_8hg15")
 
 [node name="Monto" type="Sprite2D" parent="." unique_id=903283212]
 texture = ExtResource("2_ip52q")
