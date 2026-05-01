@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://i2dnnhvim80b"]
+
+[ext_resource type="Script" uid="uid://kt8u6lqlyyh3" path="res://scenes/hover.gd" id="1_sd74f"]
+[ext_resource type="Texture2D" uid="uid://bwwbllkrypvs" path="res://assets/texturas/mapa_vacio.png" id="2_kvef0"]
+[ext_resource type="Texture2D" uid="uid://ctp60vy51om4f" path="res://assets/texturas/frent_carta.png" id="3_vfl0y"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vfl0y"]
+
+[node name="Hover" type="Control" unique_id=1053717893 node_paths=PackedStringArray("display_carta", "nombre_carta", "descripcion_carta", "coste_carta", "efectos_carta")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_sd74f")
+display_carta = NodePath("DisplayCarta")
+nombre_carta = NodePath("VBoxContainer/Nombre")
+descripcion_carta = NodePath("VBoxContainer/Descripcion")
+coste_carta = NodePath("VBoxContainer/Coste")
+efectos_carta = NodePath("VBoxContainer/Efectos")
+
+[node name="Fondo" type="TextureRect" parent="." unique_id=1989152376]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_kvef0")
+
+[node name="DisplayCarta" type="TextureRect" parent="." unique_id=2101759213]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -22.5
+offset_top = -75.0
+offset_right = 22.5
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_vfl0y")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=697799901]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 156.0
+grow_horizontal = 2
+
+[node name="Nombre" type="Label" parent="VBoxContainer" unique_id=1518407467]
+layout_mode = 2
+text = "Nombre Carta"
+
+[node name="Descripcion" type="Label" parent="VBoxContainer" unique_id=1493519249]
+layout_mode = 2
+text = "Descripcion Carta"
+label_settings = SubResource("LabelSettings_vfl0y")
+
+[node name="Coste" type="Label" parent="VBoxContainer" unique_id=1049599279]
+layout_mode = 2
+text = "Coste"
+
+[node name="Efectos" type="Label" parent="VBoxContainer" unique_id=467540530]
+layout_mode = 2
+text = "Efecto1
+Efecto2
+Efecto3"
