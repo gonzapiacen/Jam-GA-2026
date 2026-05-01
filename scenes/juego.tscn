@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cdhxocl5or8ev"]
 
-[ext_resource type="Script" uid="uid://q2xke1j7k4gj" path="res://scripts/juego.gd" id="1_bpkdb"]
+[ext_resource type="Script" uid="uid://01ha161d76qi" path="res://scripts/juego.gd" id="1_bpkdb"]
 [ext_resource type="FontFile" uid="uid://cenlao1rovtkx" path="res://assets/fonts/alagard.ttf" id="2_ae6e5"]
 [ext_resource type="Texture2D" uid="uid://dx53us5sswgvd" path="res://assets/texturas/fondo_Bosque.png" id="3_y8n3i"]
 [ext_resource type="Texture2D" uid="uid://ctp60vy51om4f" path="res://assets/texturas/frent_carta.png" id="4_pncoq"]
