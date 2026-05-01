@@ -5,6 +5,7 @@ var turno_jugador: bool = false
 # ESCENAS
 const ESCENA_JUGADOR = preload("res://scenes/player.tscn")
 const ESCENA_CARTA = preload("res://scenes/carta.tscn")
+const ESCENA_MAZO = preload("res://scenes/mazo.tscn")
 
 # NODOS
 var jugador: Player
@@ -12,8 +13,8 @@ var enemigo: Enemy
 
 func _ready() -> void:
 	jugador = ESCENA_JUGADOR.instantiate()
-	jugador.mazo = Mazo.new()
-	jugador.mazo.inicializar()
+	jugador.mazo = $Jugador/Mazo.inicializar()
+	
 	presentacion_enemigo()
 	
 func presentacion_enemigo() -> void:
@@ -26,7 +27,8 @@ func presentacion_enemigo() -> void:
 	cambiar_turno()
 	
 func empieza_turno_jugador() -> void:
-	jugador.colocar_descarte_en_mazo()
+	
+	#jugador.colocar_descarte_en_mazo()
 	for i in range(3):
 		await acomodar_carta_en_mano()
 		
@@ -34,7 +36,7 @@ func empieza_turno_jugador() -> void:
 
 func acomodar_carta_en_mano() -> void:
 	print("carta nueva")
-	var temp = crear_visual_carta(jugador.mazo.robar_carta(),$Jugador/Mazo)
+	var temp = crear_visual_carta($Jugador/Mazo.robar_carta(),$Jugador/Mazo)
 	await get_tree().create_timer(.3).timeout # PAUSA DRAMATICA
 	voltear_carta(temp)
 	temp.reparent($Jugador/Mano)
@@ -48,8 +50,14 @@ func crear_visual_carta(c: Carta, n: Node2D) -> Node2D:
 	var instancia = ESCENA_CARTA.instantiate()
 	instancia.set_carta(c)
 	n.add_child(instancia)
-	
+	instancia.enviar_al_campo.connect(_enviar_carta_al_campo)
 	return instancia
+	
+func _enviar_carta_al_campo(carta: Node2D):
+	carta.reparent($Jugador/Campo)
+	#CAMBIAR PARA QUE PUEDA SELECCIONAR ALGUNA DE LAS TRES POSICIONES
+	#FALTA MODIFICAR LA LÓGICA DE PLAYER
+	carta.position = Vector2(-75 + (75 * ($Jugador/Campo.get_child_count() - 1)),0)
 	
 func voltear_carta(n: Node2D) -> void:
 	n.get_node("Dorso").scale.x = 0
@@ -66,9 +74,12 @@ func cambiar_turno() -> void:
 	
 	if turno_jugador:
 		print("TURNO JUGADOR")
-		empieza_turno_jugador()
+		await empieza_turno_jugador()
+		$CampoCartas/PasarTurno.show()
 	else:
+		$CampoCartas/PasarTurno.hide()
 		print("TURNO ENEMIGO")
+		descartar()
 		empieza_turno_enemigo()
 """
 ESTO AGREGARLO EN LA ESCENA PRINCIPAL PARA DIBUJAR LA CARTA
@@ -83,6 +94,17 @@ mazo.append(preload("res://cartas/carta_hielo.tres"))
 ---
 """
 
+func descartar():
+	for carta in $Jugador/Mano.get_children():
+		carta.reparent($Jugador/Descarte)
+		carta.position = Vector2(0,0)
+		await get_tree().create_timer(.7).timeout # PAUSA DRAMATICA
+		
+	for carta in $Jugador/Campo.get_children():
+		carta.reparent($Jugador/Descarte)
+		carta.position = Vector2(0,0)
+		await get_tree().create_timer(.7).timeout # PAUSA DRAMATICA
+		
 func _on_pasar_turno_pressed() -> void:
 	jugador.descartar_mano()
 	cambiar_turno()
