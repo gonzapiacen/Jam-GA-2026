@@ -27,8 +27,8 @@ func _crear_carta() -> Carta:
 func robar_carta() -> Carta:
 	if cartas.is_empty():
 		return null
-	
-	return cartas.pop_back()
+	var carta = cartas.pop_back()
+	return carta
 
 func anadir_carta(nueva_carta: Carta) -> void:
 	cartas.push_back(nueva_carta)

@@ -86,7 +86,8 @@ position = Vector2(224, 360)
 [node name="Mano" type="Node2D" parent="Jugador" unique_id=1045286129]
 z_index = 2
 
-[node name="Mazo" parent="Jugador" unique_id=540842684 instance=ExtResource("7_c173r")]
+[node name="Mazo" parent="Jugador" unique_id=1991683831 instance=ExtResource("7_c173r")]
+z_index = 1
 position = Vector2(160, -58)
 
 [node name="Descarte" type="Node2D" parent="Jugador" unique_id=1172116759]
@@ -131,6 +132,7 @@ position = Vector2(224, 234)
 texture = ExtResource("6_py3uc")
 
 [node name="PasarTurno" type="Button" parent="CampoCartas" unique_id=1799541714]
+visible = false
 offset_left = 143.0
 offset_top = -22.0
 offset_right = 181.0
