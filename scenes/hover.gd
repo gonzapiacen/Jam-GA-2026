@@ -6,13 +6,14 @@ extends Control
 @export var coste_carta: Label
 @export var efectos_carta: Label
 
-func mostrar_hover(carta: Carta) -> void:
+func mostrar_hover(carta) -> void:
 	display_carta.show()
-	display_carta.texture = carta.texture
+	display_carta.texture = carta.textura
 	nombre_carta.text = carta.nombre
 	descripcion_carta.text = carta.descripcion
-	coste_carta.text = carta.coste
-	efectos_carta.text = carta.serializar_efecto()
+	if carta is Carta:
+		coste_carta.text = carta.coste
+		efectos_carta.text = carta.serializar_efecto()
 
 func ocultar_hover() -> void:
 	display_carta.hide()
