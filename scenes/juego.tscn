@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cdhxocl5or8ev"]
+[gd_scene format=3 uid="uid://bx5ae56snhsqr"]
 
 [ext_resource type="Script" uid="uid://01ha161d76qi" path="res://scripts/juego.gd" id="1_bpkdb"]
 [ext_resource type="FontFile" uid="uid://cenlao1rovtkx" path="res://assets/fonts/alagard.ttf" id="2_ae6e5"]
