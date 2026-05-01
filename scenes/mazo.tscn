@@ -1,28 +1,31 @@
 [gd_scene format=3 uid="uid://do0mh3rukqw4a"]
 
-[ext_resource type="Script" uid="uid://dfg3llnx0yen2" path="res://scripts/mazo.gd" id="1_ip52q"]
 [ext_resource type="Texture2D" uid="uid://6hj6h5x6onmy" path="res://assets/texturas/dorso_cartas.png" id="2_ip52q"]
-[ext_resource type="AudioStream" uid="uid://cge41cfpacb5a" path="res://assets/sonidos/sacar_carta_del_mazo.ogg" id="3_8hg15"]
+[ext_resource type="FontFile" uid="uid://cenlao1rovtkx" path="res://assets/fonts/alagard.ttf" id="3_8hg15"]
 
-[node name="Mazo" type="Node2D" unique_id=540842684]
-script = ExtResource("1_ip52q")
+[sub_resource type="LabelSettings" id="LabelSettings_fvkhv"]
+font = ExtResource("3_8hg15")
+
+[node name="Mazo" type="Node2D" unique_id=1991683831]
 
 [node name="Monto" type="Sprite2D" parent="." unique_id=903283212]
 texture = ExtResource("2_ip52q")
 
-[node name="CantidadCartas" type="Node2D" parent="." unique_id=877359111]
-position = Vector2(40, 0)
-
-[node name="Valor" type="Label" parent="CantidadCartas" unique_id=1453120457]
-visible = false
-offset_left = -16.0
-offset_top = -6.0
-offset_right = -6.0
-offset_bottom = 6.0
-theme_override_font_sizes/font_size = 8
-text = "40"
+[node name="Cartas" type="Label" parent="." unique_id=1771706212]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 30.0
+offset_top = -7.0
+offset_right = 48.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "999"
+label_settings = SubResource("LabelSettings_fvkhv")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="RoboCarta" type="AudioStreamPlayer2D" parent="." unique_id=1465422752]
-stream = ExtResource("3_8hg15")

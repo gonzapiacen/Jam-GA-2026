@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Carta" format=3 uid="uid://dcxcmrdf3bwbj"]
+
+[ext_resource type="Script" uid="uid://cd2jx4vdmu5ji" path="res://scripts/carta.gd" id="1_2weqc"]
+
+[resource]
+script = ExtResource("1_2weqc")
+metadata/_custom_type_script = "uid://cd2jx4vdmu5ji"
