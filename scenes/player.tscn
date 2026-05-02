@@ -4,5 +4,5 @@
 
 [node name="Player" type="Node2D" unique_id=2090310221]
 script = ExtResource("1_3vyb7")
-health = 20
+health = 12
 energy = 10

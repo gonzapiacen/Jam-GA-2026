@@ -6,6 +6,8 @@ class_name Mazo
 
 var cartas: Array[Carta] = []
 
+signal cambio_cantidad_cartas
+
 # Called when the node enters the scene tree for the first time.
 func inicializar() -> void:
 	for i in range (cantidad_de_cartas):
@@ -28,6 +30,7 @@ func robar_carta() -> Carta:
 	if cartas.is_empty():
 		return null
 	var carta = cartas.pop_back()
+	emit_signal("cambio_cantidad_cartas")
 	return carta
 
 func anadir_carta(nueva_carta: Carta) -> void:
