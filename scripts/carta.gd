@@ -1,4 +1,4 @@
-extends Resource
+extends Node
 
 class_name Carta
 
@@ -13,3 +13,7 @@ enum Tipo {
 @export var durabilidad: int
 @export var detalles: String
 @export var tipo: Tipo
+@onready var efectos: Array[Efecto]
+
+func _ready() -> void:
+	efectos.assign(get_children())

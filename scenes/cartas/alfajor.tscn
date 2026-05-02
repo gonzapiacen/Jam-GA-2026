@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b3kmaw1v31ko5"]
+
+[ext_resource type="Script" uid="uid://cd2jx4vdmu5ji" path="res://scripts/carta.gd" id="1_r28fg"]
+[ext_resource type="Script" uid="uid://d1g83tr6dtr2s" path="res://scripts/e_sanacion.gd" id="2_8ywxb"]
+
+[node name="Alfajor" type="Node" unique_id=1849579347]
+script = ExtResource("1_r28fg")
+energia = 1
+detalles = "Alfajorcito rico ñam ñam"
+metadata/_custom_type_script = "uid://cd2jx4vdmu5ji"
+
+[node name="Sanacion" type="Node" parent="." unique_id=626329806]
+script = ExtResource("2_8ywxb")
+metadata/_custom_type_script = "uid://d1g83tr6dtr2s"

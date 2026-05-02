@@ -8,7 +8,7 @@ class_name Enemy
 @export var health: int
 @export var damage: int
 @export var defense: int
-@export var player: Jugador
+
 var comportamiento: Comportamiento
 
 func ejecutar_turno() -> void:
@@ -17,5 +17,5 @@ func ejecutar_turno() -> void:
 func elegir_comportamiento() -> void:
 	pass
 
-func am_i_death() -> bool:
+func esta_muerto() -> bool:
 	return health <= 0

@@ -6,30 +6,25 @@ var turno_jugador: bool = false
 const ESCENA_CARTA = preload("res://scenes/carta.tscn")
 
 # NODOS
-@onready var jugador: Player = $Jugador
+@onready var jugador: Jugador = $Jugador
 @onready var enemigo: Enemy = $Enemigo
 @onready var boton_pasar_turno: Button = $CampoCartas/PasarTurno
+@onready var tablero: Tablero = $Tablero
 var nodo_carta_seleccionada: Carta2D = null
 
 # INSTANCIAS
-
-
 
 #var carta_esta_seleccionada: bool = false
 
 func _ready() -> void:
 	boton_pasar_turno.disabled = true
-	
-	jugador.mazo = $Jugador/Mazo.inicializar()
-	enemigo.player = jugador
 	_actualizar_vida_jugador()
-	enemigo.ataque_enemigo_realizado.connect(_actualizar_vida_jugador)
+	jugador.vida_cambio.connect(_actualizar_vida_jugador)
+	jugador.muerto.connect(_on_jugador_muerto)
 	presentacion_enemigo()
 	
 func presentacion_enemigo() -> void:
-	
 	var carta_enemigo = $Enemigo/Carta
-	
 	await get_tree().create_timer(3.0).timeout # PAUSA DRAMATICA
 	carta_enemigo.reparent($Enemigo/Campo/Opcion2,false)
 	carta_enemigo.position = Vector2(31,41)
@@ -50,7 +45,7 @@ func empieza_turno_jugador() -> void:
 
 func acomodar_carta_en_mano() -> void:
 	print("carta nueva")
-	var carta_robada = jugador.mazo.robar_carta()
+	var carta_robada = tablero.mazo.robar_carta()
 	
 	#VISUAL
 	
@@ -126,14 +121,17 @@ func empieza_turno_enemigo() -> void:
 	enemigo.attack()
 	await get_tree().create_timer(3.0).timeout # PAUSA DRAMATICA
 	cambiar_turno()
+
+func _on_jugador_muerto():
+	call_deferred("_ir_a_creditos")
+
+func _ir_a_game_over():
+	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 	
 func cambiar_turno() -> void:
 	turno_jugador = !turno_jugador
 	
 	if turno_jugador:
-		if(jugador.am_i_death()):
-			call_deferred("_ir_a_creditos")
-			return
 		print("TURNO JUGADOR")
 		await empieza_turno_jugador()
 		boton_pasar_turno.disabled = false
@@ -142,10 +140,7 @@ func cambiar_turno() -> void:
 		print("TURNO ENEMIGO")
 		descartar()
 		empieza_turno_enemigo()
-		
-func _ir_a_creditos():
-	get_tree().change_scene_to_file("res://scenes/creditos.tscn")
-	
+
 
 func descartar():
 	for nodo_carta_en_mano in $Jugador/Mano.get_children():
@@ -188,5 +183,5 @@ func _on_player_slot_pressed(id) -> void:
 			slot_player.hide()
 
 func _actualizar_vida_jugador():
-	$UI/HP.text = str(jugador.health)
-	$UI/ENG.text = str(jugador.energy)
+	$UI/HP.text = str(jugador.get_vida())
+	$UI/ENG.text = str(jugador.get_ap())
