@@ -1,25 +1,20 @@
 extends Node
 class_name Enemy
 
-@export var enemy_name: String
+@export var textura: Texture2D
+@export var nombre: String
+@export var descripcion: String
+@export var max_health: int
 @export var health: int
 @export var damage: int
 @export var defense: int
-@export var player: Player
+@export var player: Jugador
+var comportamiento: Comportamiento
 
-signal ataque_enemigo_realizado
-
-func take_turn() -> void:
-	attack()
-
-func attack() -> void:
-	player.modified_health(-damage)
-	emit_signal("ataque_enemigo_realizado")
-
-func defend() -> void:
+func ejecutar_turno() -> void:
 	pass
 
-func buff() -> void:
+func elegir_comportamiento() -> void:
 	pass
 
 func am_i_death() -> bool:

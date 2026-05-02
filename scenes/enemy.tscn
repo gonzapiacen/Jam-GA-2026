@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://bkdeyxixl5674" path="res://scripts/enemy.gd" id="1_7p1mj"]
 
-[node name="Enemy" type="Node2D" unique_id=1991253028]
+[node name="Enemy" type="Node" unique_id=1277126520]
 script = ExtResource("1_7p1mj")
-health = 10
 damage = 3
