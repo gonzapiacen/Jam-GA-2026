@@ -3,27 +3,41 @@ extends Node2D
 var turno_jugador: bool = false
 
 # ESCENAS
-const ESCENA_JUGADOR = preload("res://scenes/player.tscn")
 const ESCENA_CARTA = preload("res://scenes/carta.tscn")
-const ESCENA_MAZO = preload("res://scenes/mazo.tscn")
 
 # NODOS
-var jugador: Player
-var enemigo: Enemy
+@onready var jugador: Jugador = $Jugador
+@onready var enemigo: Enemy = $Lobo
+@onready var boton_pasar_turno: Button = $CampoCartas/PasarTurno
+@onready var tablero: Tablero = $Tablero
+var nodo_carta_seleccionada: Carta2D = null
+
+# INSTANCIAS
+
+#var carta_esta_seleccionada: bool = false
 
 func _ready() -> void:
-	jugador = ESCENA_JUGADOR.instantiate()
-	jugador.mazo = $Jugador/Mazo.inicializar()
-	
+	boton_pasar_turno.disabled = true
+	_actualizar_vida_jugador()
+	jugador.vida_cambio.connect(_actualizar_vida_jugador)
+	jugador.muerto.connect(_on_jugador_muerto)
 	presentacion_enemigo()
+	Globales.enemigo = $Lobo
+	Globales.jugador = $Jugador
 	
 func presentacion_enemigo() -> void:
-	
-	await get_tree().create_timer(2.0).timeout # PAUSA DRAMATICA
-	print("ENEMIGO (CARTA BOCA ABAJO) SE MUEVE DEL MAZO AL CAMPO")
-	print("ENEMIGO SE VE (CARTA BOCA ARRIBA)")
-	print("SE MUESTRA VIDA DEL ENEMIGO")
-	await get_tree().create_timer(2.0).timeout
+	var carta_enemigo = $Lobo
+	await get_tree().create_timer(1.0).timeout # PAUSA DRAMATICA
+	$Lobo/Carta.reparent($Lobo/Campo/Opcion2,false)
+	#carta_enemigo.position = Vector2(31,41)
+	$Lobo.position = Vector2(226.2,190)
+	print($Lobo.position)
+	$Lobo/Campo.position = Vector2(0,0)
+	enemigo.get_node("Campo/Opcion2/").disabled = true
+	enemigo.get_node("Campo/Opcion2/").show()
+	await get_tree().create_timer(1.0).timeout
+	voltear_carta(carta_enemigo)
+	await get_tree().create_timer(1.0).timeout
 	cambiar_turno()
 	
 func empieza_turno_jugador() -> void:
@@ -35,39 +49,98 @@ func empieza_turno_jugador() -> void:
 	print("DECIDIR SI JUGAR CARTAS O PASAR")
 
 func acomodar_carta_en_mano() -> void:
-	print("carta nueva")
-	var temp = crear_visual_carta($Jugador/Mazo.robar_carta(),$Jugador/Mazo)
-	await get_tree().create_timer(.3).timeout # PAUSA DRAMATICA
-	voltear_carta(temp)
-	temp.reparent($Jugador/Mano)
-	temp.position = Vector2(0,0)
-	#jugador.mano.push_back(temp)
+	var carta_robada := tablero.mazo_jugador.robar_carta()
+	carta_robada.z_index = 3
+	carta_robada.enviar_al_campo.connect(_mostrar_opciones)
 	
-	for i in range($Jugador/Mano.get_child_count()):
-		$Jugador/Mano.get_children()[i].position.x = (($Jugador/Mano.get_child_count()/2) - i) * 50
+	#VISUAL
+	
+	#var visual_carta_robada = crear_visual_carta(carta_robada,$Jugador/Mazo)
+	await get_tree().create_timer(.3).timeout # PAUSA DRAMATICA
+	#voltear_carta(visual_carta_robada)
+	voltear_carta(carta_robada)
+	print(carta_robada.get_node("Frente/Area2D"))
+	await get_tree().create_timer(.3).timeout # PAUSA DRAMATICA
+	#visual_carta_robada.reparent($Tablero/Mano)
+	#visual_carta_robada.position = Vector2(0,0)
+	carta_robada.reparent($Tablero/Mano)
+	tablero.mano.push_back(carta_robada)
+	carta_robada.position = Vector2(0,0)
+	#jugador.mano.push_back(visual_carta_robada)
+	
+	for i in range($Tablero/Mano.get_child_count()):
+		$Tablero/Mano.get_children()[i].position.x = (($Tablero/Mano.get_child_count()/2) - i) * 70
 		
-func crear_visual_carta(c: Carta, n: Node2D) -> Node2D:
+func crear_visual_carta(c: Carta, n: Node2D) -> Carta2D:
 	var instancia = ESCENA_CARTA.instantiate()
 	instancia.set_carta(c)
 	n.add_child(instancia)
-	instancia.enviar_al_campo.connect(_enviar_carta_al_campo)
+	if c.tipo == Carta.Tipo.Permanente:
+		instancia.enviar_al_campo.connect(_mostrar_opciones)
 	return instancia
 	
-func _enviar_carta_al_campo(carta: Node2D):
-	carta.reparent($Jugador/Campo)
-	#CAMBIAR PARA QUE PUEDA SELECCIONAR ALGUNA DE LAS TRES POSICIONES
-	#FALTA MODIFICAR LA LÓGICA DE PLAYER
-	carta.position = Vector2(-75 + (75 * ($Jugador/Campo.get_child_count() - 1)),0)
+func _mostrar_opciones(nodo_carta: Carta2D):
 	
-func voltear_carta(n: Node2D) -> void:
+	if(jugador.tiene_campo_lleno()):
+		print("Campo lleno")
+		return
+
+	if !nodo_carta_seleccionada:
+		#carta_esta_seleccionada = true
+		nodo_carta_seleccionada = nodo_carta
+		nodo_carta_seleccionada.position.y -= 20
+
+		boton_pasar_turno.disabled = true
+		for slot_enemigo in $Lobo/Campo.get_children():
+			if slot_enemigo.get_child_count() == 1 :
+				slot_enemigo.disabled = false
+		for slot_player in $Jugador/Campo.get_children():
+			if slot_player.get_child_count() == 0:
+				slot_player.show()
+
+	elif (nodo_carta_seleccionada == nodo_carta):
+		#carta_esta_seleccionada = false
+		nodo_carta_seleccionada.position.y += 20
+		nodo_carta_seleccionada = null
+		
+		boton_pasar_turno.disabled = false
+		for slot_player in $Jugador/Campo.get_children():
+			if slot_player.get_child_count() == 0:
+				slot_player.hide()
+		
+		for slot_enemigo in $Lobo/Campo.get_children():
+			if slot_enemigo.get_child_count() == 1:
+				slot_enemigo.disabled = true
+	else:
+		nodo_carta_seleccionada.position.y += 20
+		nodo_carta_seleccionada = nodo_carta
+		nodo_carta_seleccionada.position.y -= 20
+	
+func _elegir_enemigo():
+	var eleccion = await $Lobo/Campo/Area2D
+	pass
+
+func _aplicar_accion():
+	pass
+	
+func voltear_carta(n: Carta2D) -> void:
 	n.get_node("Dorso").scale.x = 0
 	n.get_node("Frente").scale.x = 1
 	
 func empieza_turno_enemigo() -> void:
 	await get_tree().create_timer(3.0).timeout # PAUSA DRAMATICA
 	print("ENEMIGO ATACA")
+	Globales.enemigo.ejecutar_turno()
 	await get_tree().create_timer(3.0).timeout # PAUSA DRAMATICA
 	cambiar_turno()
+
+func _on_jugador_muerto():
+	call_deferred("_ir_a_game_over")
+
+#func _ir_a_creditos():
+func _ir_a_game_over():
+	await get_tree().create_timer(1).timeout # PAUSA DRAMATICA
+	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 	
 func cambiar_turno() -> void:
 	turno_jugador = !turno_jugador
@@ -75,36 +148,54 @@ func cambiar_turno() -> void:
 	if turno_jugador:
 		print("TURNO JUGADOR")
 		await empieza_turno_jugador()
-		$CampoCartas/PasarTurno.show()
+		boton_pasar_turno.disabled = false
 	else:
-		$CampoCartas/PasarTurno.hide()
+		boton_pasar_turno.disabled = true
 		print("TURNO ENEMIGO")
 		descartar()
 		empieza_turno_enemigo()
-"""
-ESTO AGREGARLO EN LA ESCENA PRINCIPAL PARA DIBUJAR LA CARTA
-var carta_data = mazo.robar()
-var carta_node = preload("res://CartaEscena.tscn").instantiate()
 
-carta_node.set_datos(carta_data)
-add_child(carta_node)
----
-ESTO PRECARGA EL RECURSO CARTA SIN NECESIDAD DE HACERLO POR CODIGO (SOLO PARA REPETICIONES)
-mazo.append(preload("res://cartas/carta_hielo.tres"))
----
-"""
 
 func descartar():
-	for carta in $Jugador/Mano.get_children():
-		carta.reparent($Jugador/Descarte)
-		carta.position = Vector2(0,0)
-		await get_tree().create_timer(.7).timeout # PAUSA DRAMATICA
+	for nodo_carta_en_mano in $Tablero/Mano.get_children():
+		tablero.descartar_carta(nodo_carta_en_mano.carta)
 		
-	for carta in $Jugador/Campo.get_children():
-		carta.reparent($Jugador/Descarte)
-		carta.position = Vector2(0,0)
-		await get_tree().create_timer(.7).timeout # PAUSA DRAMATICA
+		# VISUAL
 		
+		nodo_carta_en_mano.reparent($Tablero/Descarte)
+		nodo_carta_en_mano.position = Vector2(0,0)
+		
+		nodo_carta_en_mano.enviar_al_campo.disconnect(_mostrar_opciones)
+		await get_tree().create_timer(.7).timeout # PAUSA DRAMATICA
+
 func _on_pasar_turno_pressed() -> void:
-	jugador.descartar_mano()
+	tablero.descartar_mano()
 	cambiar_turno()
+
+func _on_enemy_slot_pressed(id) -> void:
+	print("SLOT: ", (id+1), " DEL ENEMIGO")
+
+func _on_player_slot_pressed(id) -> void:
+	print("SLOT: ", (id+1), " DEL JUGADOR")
+	
+	jugador.jugar_carta_campo(nodo_carta_seleccionada.carta, id)
+	
+	nodo_carta_seleccionada.reparent($Jugador/Campo.get_children()[id], false)
+	nodo_carta_seleccionada.position = Vector2(31,41)
+	
+	$Jugador/Campo.get_children()[id].disabled = true
+	
+	nodo_carta_seleccionada = null
+	#carta_esta_seleccionada = false
+	
+	boton_pasar_turno.disabled = false
+	#$Lobo/Campo.hide()
+	#$Jugador/Campo.hide()
+	
+	for slot_player in $Jugador/Campo.get_children():
+		if slot_player.get_child_count() == 0:
+			slot_player.hide()
+
+func _actualizar_vida_jugador():
+	$UI/HP.text = str(jugador.get_vida())
+	$UI/ENG.text = str(jugador.get_ap())

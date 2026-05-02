@@ -1,16 +1,14 @@
 extends Node2D
 
-var mazo: Mazo
+class_name Mazo2D
 
-func inicializar() -> Mazo:
-	mazo = Mazo.new()
+@onready var cartas_label : Label = $Cartas
+@onready var mazo: Mazo = $Mazo
+
+func _ready() -> void:
 	mazo.inicializar()
-	$Cartas.text = str(mazo.cartas.size())
-	
-	return mazo
+	cartas_label.text = str(mazo.cartas.size())
+	mazo.cambio_cantidad_cartas.connect(actualizar_cantidad)
 
-func robar_carta() -> Carta:
-	var carta = mazo.robar_carta()
-	$Cartas.text = str(mazo.cartas.size())
-	
-	return carta
+func actualizar_cantidad():
+	cartas_label.text = str(mazo.cartas.size())

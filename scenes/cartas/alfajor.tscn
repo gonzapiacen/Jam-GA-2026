@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://b3kmaw1v31ko5"]
+
+[ext_resource type="Texture2D" uid="uid://dk86omf05fgg7" path="res://assets/texturas/carta_vacia.png" id="1_2ey05"]
+[ext_resource type="Script" uid="uid://cd2jx4vdmu5ji" path="res://scripts/carta.gd" id="1_r28fg"]
+[ext_resource type="Script" uid="uid://d1g83tr6dtr2s" path="res://scripts/e_sanacion.gd" id="2_8ywxb"]
+[ext_resource type="Texture2D" uid="uid://tt2t0s4rir27" path="res://assets/texturas/alfajor.png" id="2_pf1bc"]
+[ext_resource type="FontFile" uid="uid://cenlao1rovtkx" path="res://assets/fonts/alagard.ttf" id="3_rf1ud"]
+[ext_resource type="Texture2D" uid="uid://6hj6h5x6onmy" path="res://assets/texturas/dorso_cartas.png" id="4_y8kd7"]
+
+[node name="Alfajor" type="Node2D" unique_id=1717444584]
+script = ExtResource("1_r28fg")
+
+[node name="Frente" type="Sprite2D" parent="." unique_id=375602900]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_2ey05")
+
+[node name="Dibujo" type="Sprite2D" parent="Frente" unique_id=1159171083]
+texture = ExtResource("2_pf1bc")
+
+[node name="Vida" type="Label" parent="Frente" unique_id=1134404288]
+offset_left = -30.0
+offset_top = -50.0
+offset_right = -1.0
+offset_bottom = -27.0
+theme_override_colors/font_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+theme_override_fonts/font = ExtResource("3_rf1ud")
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dorso" type="Sprite2D" parent="." unique_id=2110178243]
+texture = ExtResource("4_y8kd7")
+
+[node name="Efectos" type="Node" parent="." unique_id=1426808335]
+
+[node name="Sanacion" type="Node" parent="Efectos" unique_id=626329806]
+script = ExtResource("2_8ywxb")
+metadata/_custom_type_script = "uid://d1g83tr6dtr2s"

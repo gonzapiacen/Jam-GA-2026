@@ -1,4 +1,4 @@
-extends Node
+extends Carta2D
 class_name Enemy
 
 @export var textura: Texture2D
@@ -8,11 +8,18 @@ class_name Enemy
 @export var health: int
 @export var damage: int
 @export var defense: int
-@export var player: Jugador
-var comportamiento: Comportamiento
+
+@export var comportamiento: Comportamiento
 
 func ejecutar_turno() -> void:
+	comportamiento.avance_fsm()
 	pass
 
 func elegir_comportamiento() -> void:
 	pass
+	
+func restar_vida(cantidad: int):
+	health -= cantidad
+
+func esta_muerto() -> bool:
+	return health <= 0

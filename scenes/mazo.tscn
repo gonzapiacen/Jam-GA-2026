@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bmvdykpm0emc3" path="res://scenes/mazo_node.gd" id="1_8hg15"]
 [ext_resource type="Texture2D" uid="uid://6hj6h5x6onmy" path="res://assets/texturas/dorso_cartas.png" id="2_ip52q"]
 [ext_resource type="FontFile" uid="uid://cenlao1rovtkx" path="res://assets/fonts/alagard.ttf" id="3_8hg15"]
+[ext_resource type="Script" uid="uid://dfg3llnx0yen2" path="res://scripts/mazo.gd" id="4_fvkhv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fvkhv"]
 font = ExtResource("3_8hg15")
@@ -31,3 +32,7 @@ text = "999"
 label_settings = SubResource("LabelSettings_fvkhv")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Mazo" type="Node" parent="." unique_id=247516494]
+script = ExtResource("4_fvkhv")
+metadata/_custom_type_script = "uid://dfg3llnx0yen2"

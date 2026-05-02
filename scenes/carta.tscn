@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dis815jg1ldj4"]
 
 [ext_resource type="Script" uid="uid://ck2bqjec8603u" path="res://scenes/carta_node.gd" id="1_txgwi"]
-[ext_resource type="Texture2D" uid="uid://ctp60vy51om4f" path="res://assets/texturas/frent_carta.png" id="2_rx7pn"]
+[ext_resource type="Texture2D" uid="uid://dk86omf05fgg7" path="res://assets/texturas/carta_vacia.png" id="2_txgwi"]
 [ext_resource type="Texture2D" uid="uid://cvrlu0mc5m605" path="res://assets/texturas/iconos/icono_consumible.png" id="3_3p8e2"]
 [ext_resource type="FontFile" uid="uid://cenlao1rovtkx" path="res://assets/fonts/alagard.ttf" id="3_cc48w"]
 [ext_resource type="Texture2D" uid="uid://6hj6h5x6onmy" path="res://assets/texturas/dorso_cartas.png" id="3_rx7pn"]
@@ -17,8 +17,8 @@ script = ExtResource("1_txgwi")
 [node name="Frente" type="Sprite2D" parent="." unique_id=2050905613]
 z_index = 1
 position = Vector2(0, 3.0517578e-05)
-scale = Vector2(1e-05, 1)
-texture = ExtResource("2_rx7pn")
+scale = Vector2(1e-05, 0.75)
+texture = ExtResource("2_txgwi")
 
 [node name="Titulo" type="Label" parent="Frente" unique_id=2013314820]
 visible = false
@@ -66,6 +66,7 @@ vertical_alignment = 1
 [node name="Area2D" type="Area2D" parent="Frente" unique_id=1419944000]
 z_index = 1
 position = Vector2(0, -3.0517578e-05)
+scale = Vector2(1.3, 1.3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Frente/Area2D" unique_id=1117827810]
 shape = SubResource("RectangleShape2D_ywsyh")

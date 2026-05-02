@@ -9,4 +9,3 @@ func serializar() -> String:
 func activar():
 	super()
 	Globales.jugador.sumar_defensa(puntos)
-
