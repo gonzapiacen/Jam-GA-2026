@@ -16,11 +16,11 @@ func inicializar() -> void:
 	cartas.shuffle()
 	
 func _crear_carta() -> Carta:
+	#TODO cambiar por cargar cartas de recursos
 	var nueva_carta
 	nueva_carta = Carta.new()
 	nueva_carta.energia = randi() % 9
 	nueva_carta.efecto = ((randi() % 9) + 1)
-	nueva_carta.tipo_de_efecto = randi() % 3
 	nueva_carta.es_consumible = randi() % 2
 	nueva_carta.durabilidad = ((randi() % 9) + 1)
 	

@@ -18,6 +18,7 @@ var nodo_carta_seleccionada: Carta2D = null
 #var carta_esta_seleccionada: bool = false
 
 func _ready() -> void:
+	boton_pasar_turno.disabled = true
 	
 	jugador.mazo = $Jugador/Mazo.inicializar()
 	enemigo.player = jugador
@@ -67,7 +68,8 @@ func crear_visual_carta(c: Carta, n: Node2D) -> Carta2D:
 	var instancia = ESCENA_CARTA.instantiate()
 	instancia.set_carta(c)
 	n.add_child(instancia)
-	instancia.enviar_al_campo.connect(_mostrar_opciones)
+	if c.tipo == Carta.Tipo.Permanente:
+		instancia.enviar_al_campo.connect(_mostrar_opciones)
 	return instancia
 	
 func _mostrar_opciones(nodo_carta: Carta2D):
@@ -81,7 +83,7 @@ func _mostrar_opciones(nodo_carta: Carta2D):
 		nodo_carta_seleccionada = nodo_carta
 		nodo_carta_seleccionada.position.y -= 20
 
-		boton_pasar_turno.hide()
+		boton_pasar_turno.disabled = true
 		for slot_enemigo in $Enemigo/Campo.get_children():
 			if slot_enemigo.get_child_count() == 1 :
 				slot_enemigo.disabled = false
@@ -94,7 +96,7 @@ func _mostrar_opciones(nodo_carta: Carta2D):
 		nodo_carta_seleccionada.position.y += 20
 		nodo_carta_seleccionada = null
 		
-		boton_pasar_turno.show()
+		boton_pasar_turno.disabled = false
 		for slot_player in $Jugador/Campo.get_children():
 			if slot_player.get_child_count() == 0:
 				slot_player.hide()
@@ -130,12 +132,13 @@ func cambiar_turno() -> void:
 	
 	if turno_jugador:
 		if(jugador.am_i_death()):
-			await call_deferred("_ir_a_creditos")
+			call_deferred("_ir_a_creditos")
+			return
 		print("TURNO JUGADOR")
 		await empieza_turno_jugador()
-		boton_pasar_turno.show()
+		boton_pasar_turno.disabled = false
 	else:
-		boton_pasar_turno.hide()
+		boton_pasar_turno.disabled = true
 		print("TURNO ENEMIGO")
 		descartar()
 		empieza_turno_enemigo()
@@ -176,7 +179,7 @@ func _on_player_slot_pressed(id) -> void:
 	nodo_carta_seleccionada = null
 	#carta_esta_seleccionada = false
 	
-	boton_pasar_turno.show()
+	boton_pasar_turno.disabled = false
 	#$Enemigo/Campo.hide()
 	#$Jugador/Campo.hide()
 	

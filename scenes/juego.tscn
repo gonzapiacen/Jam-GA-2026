@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cdhxocl5or8ev"]
+[gd_scene format=3 uid="uid://bx5ae56snhsqr"]
 
 [ext_resource type="Script" uid="uid://01ha161d76qi" path="res://scripts/juego.gd" id="1_bpkdb"]
 [ext_resource type="FontFile" uid="uid://cenlao1rovtkx" path="res://assets/fonts/alagard.ttf" id="2_ae6e5"]
@@ -55,22 +55,6 @@ offset_top = 333.0
 offset_right = 147.0
 offset_bottom = 356.0
 text = "AP:"
-label_settings = SubResource("LabelSettings_3oebh")
-
-[node name="EnemyHP" type="Label" parent="UI" unique_id=150051665]
-offset_left = 220.0
-offset_top = 112.0
-offset_right = 260.0
-offset_bottom = 135.0
-text = "sdfs"
-label_settings = SubResource("LabelSettings_3oebh")
-
-[node name="EnemyHP2" type="Label" parent="UI" unique_id=1612057625]
-offset_left = 193.0
-offset_top = 112.0
-offset_right = 233.0
-offset_bottom = 135.0
-text = "HP:"
 label_settings = SubResource("LabelSettings_3oebh")
 
 [node name="Enemigo" type="Node2D" parent="." unique_id=1989618205 node_paths=PackedStringArray("player")]
@@ -250,7 +234,6 @@ position = Vector2(224, 234)
 texture = ExtResource("6_py3uc")
 
 [node name="PasarTurno" type="Button" parent="CampoCartas" unique_id=1799541714]
-visible = false
 offset_left = 143.0
 offset_top = -22.0
 offset_right = 181.0
