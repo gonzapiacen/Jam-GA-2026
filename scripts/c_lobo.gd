@@ -7,7 +7,7 @@ enum Estado{
 	Defensa,
 	PreFrenesi
 }
-var estado:= Estado.Neutro
+var estado:= Estado.PreAtk
 var contador: int = 0
 @export var chance_defensa: float = 0.33
 @export var chance_frenesi: float = 0.70

@@ -7,7 +7,7 @@ const ESCENA_CARTA = preload("res://scenes/carta.tscn")
 
 # NODOS
 @onready var jugador: Jugador = $Jugador
-@onready var enemigo: Enemy = $Enemigo
+@onready var enemigo: Enemy = $Lobo
 @onready var boton_pasar_turno: Button = $CampoCartas/PasarTurno
 @onready var tablero: Tablero = $Tablero
 var nodo_carta_seleccionada: Carta2D = null
@@ -22,12 +22,17 @@ func _ready() -> void:
 	jugador.vida_cambio.connect(_actualizar_vida_jugador)
 	jugador.muerto.connect(_on_jugador_muerto)
 	presentacion_enemigo()
+	Globales.enemigo = $Lobo
+	Globales.jugador = $Jugador
 	
 func presentacion_enemigo() -> void:
-	var carta_enemigo = $Enemigo/Lobo
+	var carta_enemigo = $Lobo
 	await get_tree().create_timer(1.0).timeout # PAUSA DRAMATICA
-	carta_enemigo.reparent($Enemigo/Campo/Opcion2,false)
-	carta_enemigo.position = Vector2(31,41)
+	$Lobo/Carta.reparent($Lobo/Campo/Opcion2,false)
+	#carta_enemigo.position = Vector2(31,41)
+	$Lobo.position = Vector2(226.2,190)
+	print($Lobo.position)
+	$Lobo/Campo.position = Vector2(0,0)
 	enemigo.get_node("Campo/Opcion2/").disabled = true
 	enemigo.get_node("Campo/Opcion2/").show()
 	await get_tree().create_timer(1.0).timeout
@@ -56,9 +61,10 @@ func acomodar_carta_en_mano() -> void:
 	voltear_carta(carta_robada)
 	print(carta_robada.get_node("Frente/Area2D"))
 	await get_tree().create_timer(.3).timeout # PAUSA DRAMATICA
-	#visual_carta_robada.reparent($Jugador/Mano)
+	#visual_carta_robada.reparent($Tablero/Mano)
 	#visual_carta_robada.position = Vector2(0,0)
 	carta_robada.reparent($Tablero/Mano)
+	tablero.mano.push_back(carta_robada)
 	carta_robada.position = Vector2(0,0)
 	#jugador.mano.push_back(visual_carta_robada)
 	
@@ -85,7 +91,7 @@ func _mostrar_opciones(nodo_carta: Carta2D):
 		nodo_carta_seleccionada.position.y -= 20
 
 		boton_pasar_turno.disabled = true
-		for slot_enemigo in $Enemigo/Campo.get_children():
+		for slot_enemigo in $Lobo/Campo.get_children():
 			if slot_enemigo.get_child_count() == 1 :
 				slot_enemigo.disabled = false
 		for slot_player in $Jugador/Campo.get_children():
@@ -102,7 +108,7 @@ func _mostrar_opciones(nodo_carta: Carta2D):
 			if slot_player.get_child_count() == 0:
 				slot_player.hide()
 		
-		for slot_enemigo in $Enemigo/Campo.get_children():
+		for slot_enemigo in $Lobo/Campo.get_children():
 			if slot_enemigo.get_child_count() == 1:
 				slot_enemigo.disabled = true
 	else:
@@ -111,7 +117,7 @@ func _mostrar_opciones(nodo_carta: Carta2D):
 		nodo_carta_seleccionada.position.y -= 20
 	
 func _elegir_enemigo():
-	var eleccion = await $Enemigo/Campo/Area2D
+	var eleccion = await $Lobo/Campo/Area2D
 	pass
 
 func _aplicar_accion():
@@ -124,14 +130,16 @@ func voltear_carta(n: Carta2D) -> void:
 func empieza_turno_enemigo() -> void:
 	await get_tree().create_timer(3.0).timeout # PAUSA DRAMATICA
 	print("ENEMIGO ATACA")
-	enemigo.attack()
+	Globales.enemigo.ejecutar_turno()
 	await get_tree().create_timer(3.0).timeout # PAUSA DRAMATICA
 	cambiar_turno()
 
 func _on_jugador_muerto():
-	call_deferred("_ir_a_creditos")
+	call_deferred("_ir_a_game_over")
 
+#func _ir_a_creditos():
 func _ir_a_game_over():
+	await get_tree().create_timer(1).timeout # PAUSA DRAMATICA
 	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 	
 func cambiar_turno() -> void:
@@ -149,19 +157,19 @@ func cambiar_turno() -> void:
 
 
 func descartar():
-	for nodo_carta_en_mano in $Jugador/Mano.get_children():
-		jugador.descartar_carta(nodo_carta_en_mano.carta)
+	for nodo_carta_en_mano in $Tablero/Mano.get_children():
+		tablero.descartar_carta(nodo_carta_en_mano.carta)
 		
 		# VISUAL
 		
-		nodo_carta_en_mano.reparent($Jugador/Descarte)
+		nodo_carta_en_mano.reparent($Tablero/Descarte)
 		nodo_carta_en_mano.position = Vector2(0,0)
 		
 		nodo_carta_en_mano.enviar_al_campo.disconnect(_mostrar_opciones)
 		await get_tree().create_timer(.7).timeout # PAUSA DRAMATICA
 
 func _on_pasar_turno_pressed() -> void:
-	jugador.descartar_mano()
+	tablero.descartar_mano()
 	cambiar_turno()
 
 func _on_enemy_slot_pressed(id) -> void:
@@ -181,7 +189,7 @@ func _on_player_slot_pressed(id) -> void:
 	#carta_esta_seleccionada = false
 	
 	boton_pasar_turno.disabled = false
-	#$Enemigo/Campo.hide()
+	#$Lobo/Campo.hide()
 	#$Jugador/Campo.hide()
 	
 	for slot_player in $Jugador/Campo.get_children():

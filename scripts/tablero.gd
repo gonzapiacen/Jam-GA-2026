@@ -7,7 +7,7 @@ class_name Tablero
 @export var mazo_enemigo: Mazo
 
 var mano: Array[Carta2D] = []
-var descarte: Mazo
+var descarte: Array[Carta2D] = []
 
 # ESCENAS
 const ESCENA_LOBO = preload("res://scenes/cartas/lobo.tscn")
@@ -21,6 +21,8 @@ var campo_enemigo: Array[Carta2D] = [null, null, null]
 var campo_jugador: Array[Carta2D] = [null, null, null]
 
 func _ready():
+	
+	
 	
 	var carta_creada
 	for i in range(2):
@@ -48,7 +50,7 @@ func campo_enemigo_lleno() -> bool:
 
 func descartar_mano():
 	for carta in mano:
-		descarte.poner_en_tope(mano.pop_back())
+		descartar_carta(carta)
 		
 func descartar_carta(carta: Carta2D):
 	mano.erase(carta)
@@ -60,7 +62,7 @@ func robar_carta() -> Carta:
 	return temp
 
 func colocar_descarte_en_mazo():
-	mazo_jugador.cartas.append_array(descarte.cartas)
+	mazo_jugador.cartas.append_array(descarte)
 	mazo_jugador.shuffle()
 	descarte.clear() 
 

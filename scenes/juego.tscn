@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://01ha161d76qi" path="res://scripts/juego.gd" id="1_bpkdb"]
 [ext_resource type="FontFile" uid="uid://cenlao1rovtkx" path="res://assets/fonts/alagard.ttf" id="2_ae6e5"]
-[ext_resource type="Script" uid="uid://bkdeyxixl5674" path="res://scripts/enemy.gd" id="3_pncoq"]
 [ext_resource type="Texture2D" uid="uid://dx53us5sswgvd" path="res://assets/texturas/fondo_Bosque.png" id="3_y8n3i"]
 [ext_resource type="PackedScene" uid="uid://dis815jg1ldj4" path="res://scenes/carta.tscn" id="4_d7syh"]
 [ext_resource type="Texture2D" uid="uid://ctp60vy51om4f" path="res://assets/texturas/frent_carta.png" id="4_pncoq"]
@@ -59,19 +58,18 @@ offset_bottom = 356.0
 text = "AP:"
 label_settings = SubResource("LabelSettings_3oebh")
 
-[node name="Enemigo" type="Node2D" parent="." unique_id=1989618205]
-position = Vector2(224, 108)
-script = ExtResource("3_pncoq")
-health = 10
-damage = 12
+[node name="Lobo" parent="." unique_id=388588261 instance=ExtResource("5_py3uc")]
+position = Vector2(63, 167)
 
-[node name="Campo" type="Control" parent="Enemigo" unique_id=508245655]
+[node name="Campo" type="Control" parent="Lobo" unique_id=508245655]
 layout_mode = 3
 anchors_preset = 0
-offset_top = 80.0
-offset_bottom = 80.0
+offset_left = 161.0
+offset_top = 21.0
+offset_right = 161.0
+offset_bottom = 21.0
 
-[node name="Opcion1" type="Button" parent="Enemigo/Campo" unique_id=462354064]
+[node name="Opcion1" type="Button" parent="Lobo/Campo" unique_id=462354064]
 visible = false
 z_index = 1
 layout_mode = 1
@@ -88,7 +86,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(31, 41)
 
-[node name="Opcion2" type="Button" parent="Enemigo/Campo" unique_id=17764626]
+[node name="Opcion2" type="Button" parent="Lobo/Campo" unique_id=17764626]
 visible = false
 z_index = 1
 layout_mode = 1
@@ -105,7 +103,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(31, 41)
 
-[node name="Opcion3" type="Button" parent="Enemigo/Campo" unique_id=1414869108]
+[node name="Opcion3" type="Button" parent="Lobo/Campo" unique_id=1414869108]
 visible = false
 z_index = 1
 layout_mode = 1
@@ -122,13 +120,9 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(31, 41)
 
-[node name="Carta" parent="Enemigo" unique_id=527444017 instance=ExtResource("4_d7syh")]
+[node name="Carta" parent="Lobo" unique_id=527444017 instance=ExtResource("4_d7syh")]
 visible = false
-position = Vector2(-161, 59)
-
-[node name="Lobo" parent="Enemigo" unique_id=388588261 instance=ExtResource("5_py3uc")]
-z_index = 1
-position = Vector2(-161, 59)
+z_index = 5
 
 [node name="Jugador" type="Node" parent="." unique_id=57199260]
 script = ExtResource("14_d7syh")

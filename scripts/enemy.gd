@@ -12,6 +12,7 @@ class_name Enemy
 @export var comportamiento: Comportamiento
 
 func ejecutar_turno() -> void:
+	comportamiento.avance_fsm()
 	pass
 
 func elegir_comportamiento() -> void:

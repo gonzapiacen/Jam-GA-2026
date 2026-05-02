@@ -85,3 +85,6 @@ text = "Volver al menu"
 layout_mode = 2
 theme = SubResource("Theme_irg28")
 text = "Reintentar"
+
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_main_menu"]
+[connection signal="pressed" from="HBoxContainer/Button2" to="." method="_on_retry"]
