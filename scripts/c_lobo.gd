@@ -19,9 +19,9 @@ func ejecutar_estado() -> void:
 func avance_fsm() -> void:
 	match(estado):
 		Estado.Neutro:
-			if monstruo.health >= monstruo.health/2.0 and randf() < chance_defensa: 
+			if monstruo.max >= monstruo.max_health/2.0 and randf() < chance_defensa: 
 				estado = Estado.Defensa
-			else: if monstruo.health < monstruo.health/2.0 and randf() < chance_frenesi:
+			else: if monstruo.health < monstruo.max_health/2.0 and randf() < chance_frenesi:
 				estado = Estado.PreFrenesi
 			else:
 				Estado.PreAtk
