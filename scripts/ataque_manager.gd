@@ -6,4 +6,3 @@ static func atacar_jugador(valor: int):
 		Globales.jugador.restar_defensa(valor)
 	else:
 		Globales.jugador.restar_vida(valor)	
-
