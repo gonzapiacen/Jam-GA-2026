@@ -1,4 +1,4 @@
-extends Node
+extends Carta2D
 
 class_name Carta
 
@@ -16,4 +16,4 @@ enum Tipo {
 @onready var efectos: Array[Efecto]
 
 func _ready() -> void:
-	efectos.assign(get_children())
+	efectos.assign($Efectos.get_children())

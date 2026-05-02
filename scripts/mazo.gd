@@ -3,8 +3,7 @@ class_name Mazo
 
 var cartas : Array[Carta2D] = []
 
-func _ready() -> void:
-	cartas.
+#func _ready() -> void:
 
 func push_back(carta: Carta2D):
 	cartas.push_back(carta)

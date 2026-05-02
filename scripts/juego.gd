@@ -24,15 +24,15 @@ func _ready() -> void:
 	presentacion_enemigo()
 	
 func presentacion_enemigo() -> void:
-	var carta_enemigo = $Enemigo/Carta
-	await get_tree().create_timer(3.0).timeout # PAUSA DRAMATICA
+	var carta_enemigo = $Enemigo/Lobo
+	await get_tree().create_timer(1.0).timeout # PAUSA DRAMATICA
 	carta_enemigo.reparent($Enemigo/Campo/Opcion2,false)
 	carta_enemigo.position = Vector2(31,41)
 	enemigo.get_node("Campo/Opcion2/").disabled = true
 	enemigo.get_node("Campo/Opcion2/").show()
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	voltear_carta(carta_enemigo)
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	cambiar_turno()
 	
 func empieza_turno_jugador() -> void:
@@ -44,20 +44,26 @@ func empieza_turno_jugador() -> void:
 	print("DECIDIR SI JUGAR CARTAS O PASAR")
 
 func acomodar_carta_en_mano() -> void:
-	print("carta nueva")
-	var carta_robada = tablero.mazo.robar_carta()
+	var carta_robada := tablero.mazo_jugador.robar_carta()
+	carta_robada.z_index = 3
+	carta_robada.enviar_al_campo.connect(_mostrar_opciones)
 	
 	#VISUAL
 	
-	var visual_carta_robada = crear_visual_carta(carta_robada,$Jugador/Mazo)
+	#var visual_carta_robada = crear_visual_carta(carta_robada,$Jugador/Mazo)
 	await get_tree().create_timer(.3).timeout # PAUSA DRAMATICA
-	voltear_carta(visual_carta_robada)
-	visual_carta_robada.reparent($Jugador/Mano)
-	visual_carta_robada.position = Vector2(0,0)
+	#voltear_carta(visual_carta_robada)
+	voltear_carta(carta_robada)
+	print(carta_robada.get_node("Frente/Area2D"))
+	await get_tree().create_timer(.3).timeout # PAUSA DRAMATICA
+	#visual_carta_robada.reparent($Jugador/Mano)
+	#visual_carta_robada.position = Vector2(0,0)
+	carta_robada.reparent($Tablero/Mano)
+	carta_robada.position = Vector2(0,0)
 	#jugador.mano.push_back(visual_carta_robada)
 	
-	for i in range($Jugador/Mano.get_child_count()):
-		$Jugador/Mano.get_children()[i].position.x = (($Jugador/Mano.get_child_count()/2) - i) * 50
+	for i in range($Tablero/Mano.get_child_count()):
+		$Tablero/Mano.get_children()[i].position.x = (($Tablero/Mano.get_child_count()/2) - i) * 70
 		
 func crear_visual_carta(c: Carta, n: Node2D) -> Carta2D:
 	var instancia = ESCENA_CARTA.instantiate()
@@ -111,7 +117,7 @@ func _elegir_enemigo():
 func _aplicar_accion():
 	pass
 	
-func voltear_carta(n: Node2D) -> void:
+func voltear_carta(n: Carta2D) -> void:
 	n.get_node("Dorso").scale.x = 0
 	n.get_node("Frente").scale.x = 1
 	

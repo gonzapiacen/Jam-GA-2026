@@ -13,8 +13,8 @@ func set_carta(c: Carta) -> void:
 	_set_vista()
 	
 func _set_vista() -> void:
+	print("SETEANDO")
 	$Frente/Energia/ValorEnergia.text = str(carta.energia)
-	$Frente/Efecto/ValorEfecto.text = str(carta.efecto)
 	$Frente/Durabilidad/ValorDurabilidad.text = str(carta.durabilidad)
 
 func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:

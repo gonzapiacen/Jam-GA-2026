@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dis815jg1ldj4" path="res://scenes/carta.tscn" id="4_d7syh"]
 [ext_resource type="Texture2D" uid="uid://ctp60vy51om4f" path="res://assets/texturas/frent_carta.png" id="4_pncoq"]
 [ext_resource type="PackedScene" uid="uid://capum1kkvsn3m" path="res://scenes/map_scene.tscn" id="5_d7syh"]
+[ext_resource type="PackedScene" uid="uid://d0nfdo05hin1" path="res://scenes/cartas/lobo.tscn" id="5_py3uc"]
 [ext_resource type="Texture2D" uid="uid://bmsqh3yvvorov" path="res://assets/texturas/mesaCartas.png" id="6_py3uc"]
 [ext_resource type="Script" uid="uid://dfg3llnx0yen2" path="res://scripts/mazo.gd" id="7_d7syh"]
 [ext_resource type="AudioStream" uid="uid://dldlu0u6ae8ta" path="res://assets/musica/cancion_1.ogg" id="8_d0608"]
@@ -122,22 +123,42 @@ grow_vertical = 2
 pivot_offset = Vector2(31, 41)
 
 [node name="Carta" parent="Enemigo" unique_id=527444017 instance=ExtResource("4_d7syh")]
+visible = false
+position = Vector2(-161, 59)
+
+[node name="Lobo" parent="Enemigo" unique_id=388588261 instance=ExtResource("5_py3uc")]
+z_index = 1
 position = Vector2(-161, 59)
 
 [node name="Jugador" type="Node" parent="." unique_id=57199260]
 script = ExtResource("14_d7syh")
 metadata/_custom_type_script = "uid://dqp4a748fn57g"
 
-[node name="Tablero" type="Node2D" parent="." unique_id=1330790062]
+[node name="Tablero" type="Node2D" parent="." unique_id=1330790062 node_paths=PackedStringArray("mazo_jugador")]
+position = Vector2(224, 234)
 script = ExtResource("15_py3uc")
+mazo_jugador = NodePath("Mazo")
 metadata/_custom_type_script = "uid://bw6ir3vg0qv16"
 
 [node name="Mazo" type="Node2D" parent="Tablero" unique_id=1368023219]
+z_index = 1
+position = Vector2(160, 68)
 script = ExtResource("7_d7syh")
 metadata/_custom_type_script = "uid://dfg3llnx0yen2"
 
+[node name="Cantidad" type="Label" parent="Tablero/Mazo" unique_id=1107471493]
+offset_left = 29.0
+offset_top = -10.0
+offset_right = 69.0
+offset_bottom = 13.0
+text = "999"
+
 [node name="Descarte" type="Node2D" parent="Tablero" unique_id=1172116759]
-position = Vector2(63, 302)
+position = Vector2(-161, 68)
+
+[node name="Mano" type="Node2D" parent="Tablero" unique_id=1656903652]
+z_index = 3
+position = Vector2(0, 122)
 
 [node name="Campo" type="Control" parent="Tablero" unique_id=1541941300]
 layout_mode = 3

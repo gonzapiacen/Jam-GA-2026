@@ -8,4 +8,5 @@ func serializar() -> String:
 
 func activar():
 	super()
+	Globales.enemigo.restar_vida(puntos)
 	# TODO de alguna manera esperar a que el controlador seleccione un elemento
