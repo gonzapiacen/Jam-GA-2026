@@ -11,6 +11,7 @@ var estado:= Estado.Neutro
 var contador: int = 0
 @export var chance_defensa: float = 0.33
 @export var chance_frenesi: float = 0.70
+@export var defensa: int = 3
 
 func ejecutar_estado() -> void:
 	pass
@@ -44,4 +45,4 @@ func frenesi():
 	for i in range(3):
 		AtaqueManager.atacar_jugador(monstruo.damage)
 func defender():
-	monstruo.defense = 3
+	monstruo.defense = defensa

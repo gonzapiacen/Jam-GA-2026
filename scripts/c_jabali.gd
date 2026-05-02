@@ -11,6 +11,7 @@ var estado:= Estado.Neutro
 var contador: int = 0
 @export var chance_cornada: float = 0.33
 @export var chance_carga: float = 0.33
+@export var defensa: int = 6
 
 func ejecutar_estado() -> void:
 	pass
@@ -26,7 +27,7 @@ func avance_fsm() -> void:
 			else:
 				estado = Estado.Defensa
 		Estado.Defensa:
-			defensa()
+			defender()
 			estado = Estado.Neutro
 		Estado.PreCornada:
 			cornada()
@@ -37,7 +38,7 @@ func avance_fsm() -> void:
 				estado = Estado.Neutro
 				contador = 0
 			else:
-				monstruo.defense += 3
+				monstruo.defense += defensa/2
 				contador += 1
 
 func cornada():
@@ -46,5 +47,5 @@ func cornada():
 func carga():
 	AtaqueManager.atacar_jugador(monstruo.damage*2)
 
-func defensa():
-	monstruo.defense = 6
+func defender():
+	monstruo.defense = defensa

@@ -10,6 +10,7 @@ enum Estado{
 var estado:= Estado.Neutro
 var contador: int = 0
 @export var chance_regeneracion: float = 0.33
+@export var regeneracion: int = 5
 
 func ejecutar_estado() -> void:
 	pass
@@ -29,7 +30,7 @@ func avance_fsm() -> void:
 			estado = Estado.PreAtk
 
 func regenerar():
-	monstruo.health += 5
+	monstruo.health += regeneracion
 
 func ataque():
 	AtaqueManager.atacar_jugador(monstruo.damage)
