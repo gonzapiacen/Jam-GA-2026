@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CartaEnemigoRes" format=3 uid="uid://1s3jxhecgpgj"]
+
+[ext_resource type="Script" uid="uid://b38tcphauqonp" path="res://resources/enemigos/carta_enemigo_res.gd" id="1_1bnis"]
+[ext_resource type="Texture2D" uid="uid://bvt0eu7qamnr5" path="res://assets/texturas/lobo.png" id="2_6lxpr"]
+
+[resource]
+script = ExtResource("1_1bnis")
+sprite = ExtResource("2_6lxpr")
+nombre = "Lobo feroz"
+descripcion = "Tengo unos ojos muy grandes y son para verte mejor"
+max_health = 10
+damage = 4
+metadata/_custom_type_script = "uid://b38tcphauqonp"

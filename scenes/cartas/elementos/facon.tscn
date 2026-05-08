@@ -1,14 +1,16 @@
 [gd_scene format=3 uid="uid://2a78w8ux06wb"]
 
-[ext_resource type="Script" uid="uid://cd2jx4vdmu5ji" path="res://scripts/carta.gd" id="1_x5wnc"]
+[ext_resource type="Script" uid="uid://qgjmslbx7gqf" path="res://scripts/carta_elemento.gd" id="1_y7gdc"]
+[ext_resource type="Resource" uid="uid://bc0g7lk83dtp" path="res://resources/elementos/facon.tres" id="2_2rwfs"]
 [ext_resource type="Texture2D" uid="uid://dk86omf05fgg7" path="res://assets/texturas/carta_vacia.png" id="2_eifaj"]
-[ext_resource type="Script" uid="uid://hbpypk0cvsox" path="res://scripts/e_golpe_simple.gd" id="2_x5wnc"]
+[ext_resource type="Script" uid="uid://hbpypk0cvsox" path="res://scripts/efectos/e_golpe_simple.gd" id="2_x5wnc"]
 [ext_resource type="Texture2D" uid="uid://bynxxff86fet7" path="res://assets/texturas/facon.png" id="3_eifaj"]
 [ext_resource type="FontFile" uid="uid://cenlao1rovtkx" path="res://assets/fonts/alagard.ttf" id="4_owbsw"]
 [ext_resource type="Texture2D" uid="uid://6hj6h5x6onmy" path="res://assets/texturas/dorso_cartas.png" id="5_ss7jd"]
 
 [node name="Facon" type="Node2D" unique_id=1717444584]
-script = ExtResource("1_x5wnc")
+script = ExtResource("1_y7gdc")
+carta_res = ExtResource("2_2rwfs")
 
 [node name="Frente" type="Sprite2D" parent="." unique_id=375602900]
 scale = Vector2(0.75, 0.75)
@@ -17,7 +19,7 @@ texture = ExtResource("2_eifaj")
 [node name="Dibujo" type="Sprite2D" parent="Frente" unique_id=1159171083]
 texture = ExtResource("3_eifaj")
 
-[node name="Dano" type="Label" parent="Frente" unique_id=1134404288]
+[node name="Cantidad" type="Label" parent="Frente" unique_id=1134404288]
 offset_left = -30.0
 offset_top = -50.0
 offset_right = -1.0
@@ -35,5 +37,4 @@ texture = ExtResource("5_ss7jd")
 
 [node name="GolpeSimple" type="Node" parent="Efectos" unique_id=347027302]
 script = ExtResource("2_x5wnc")
-puntos = 5
 metadata/_custom_type_script = "uid://hbpypk0cvsox"

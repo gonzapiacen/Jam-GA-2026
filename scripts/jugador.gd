@@ -1,10 +1,21 @@
-extends Node
+extends Node2D
+
 class_name Jugador
+
+# PROPIOS
 
 var _vida := 10
 var _max_vida := 10
 var _ap := 3
 var _defensa := 0
+
+# EXTERNOS
+
+var mazo: Mazo
+var mano: Array[Carta] = []
+var descarte: Array[Carta] = []
+var campo: Array[Carta] = []
+
 #var vida := 10
 #	set(val):
 #		if val < _vida:
@@ -13,6 +24,7 @@ var _defensa := 0
 #			sumar_vida(val)
 #	get(): return _vida
 
+# SENALES
 
 signal vida_cambio
 signal ap_cambio

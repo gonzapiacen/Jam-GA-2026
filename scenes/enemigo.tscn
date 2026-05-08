@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cdwqu24542trg"]
+
+[ext_resource type="Script" uid="uid://bkdeyxixl5674" path="res://scripts/enemigo.gd" id="1_7p1mj"]
+
+[node name="Enemigo" type="Node2D" unique_id=79567222]
+script = ExtResource("1_7p1mj")
+damage = 3

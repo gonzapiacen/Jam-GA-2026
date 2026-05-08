@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://c2ihvmcis5ekv"]
+
+[ext_resource type="Script" uid="uid://cm88d5uvqeusn" path="res://scripts/carta_enemigo.gd" id="1_aecgc"]
+[ext_resource type="Resource" uid="uid://1s3jxhecgpgj" path="res://resources/enemigos/lobo.tres" id="2_jwjgg"]
+[ext_resource type="Texture2D" uid="uid://dk86omf05fgg7" path="res://assets/texturas/carta_vacia.png" id="3_p3fha"]
+[ext_resource type="FontFile" uid="uid://cenlao1rovtkx" path="res://assets/fonts/alagard.ttf" id="4_ydja3"]
+[ext_resource type="Texture2D" uid="uid://6hj6h5x6onmy" path="res://assets/texturas/dorso_cartas.png" id="6_11rfq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ywsyh"]
+size = Vector2(44, 74)
+
+[node name="CartaEnemigo" type="Node2D" unique_id=924451003]
+script = ExtResource("1_aecgc")
+carta_res = ExtResource("2_jwjgg")
+
+[node name="Frente" type="Sprite2D" parent="." unique_id=2050905613]
+z_index = 1
+position = Vector2(0, 3.0517578e-05)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_p3fha")
+
+[node name="Titulo" type="Label" parent="Frente" unique_id=2013314820]
+visible = false
+offset_left = -53.333332
+offset_top = -60.8
+offset_right = 53.33334
+offset_bottom = -37.8
+theme_override_fonts/font = ExtResource("4_ydja3")
+text = "Titulo"
+horizontal_alignment = 1
+
+[node name="Dibujo" type="Sprite2D" parent="Frente" unique_id=450014628]
+
+[node name="Dano" type="Node2D" parent="Frente" unique_id=1812310512]
+position = Vector2(-18.666666, -40.00004)
+scale = Vector2(1, 1.0000001)
+
+[node name="ValorDano" type="Label" parent="Frente/Dano" unique_id=1857645359]
+offset_left = -8.000002
+offset_top = -6.6666684
+offset_right = 13.151686
+offset_bottom = 8.333332
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ydja3")
+text = "99"
+vertical_alignment = 1
+
+[node name="Vida" type="Node2D" parent="Frente" unique_id=1260407772]
+position = Vector2(13, -29.00003)
+
+[node name="ValorVida" type="Label" parent="Frente/Vida" unique_id=1978812870]
+offset_left = -3.6666665
+offset_top = -17.666676
+offset_right = 14.333334
+offset_bottom = -2.6666756
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ydja3")
+text = "99"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="Frente" unique_id=1419944000]
+z_index = 1
+position = Vector2(0, -3.0517578e-05)
+scale = Vector2(1.3, 1.3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Frente/Area2D" unique_id=1117827810]
+shape = SubResource("RectangleShape2D_ywsyh")
+
+[node name="Dorso" type="Sprite2D" parent="." unique_id=2053787691]
+visible = false
+z_index = 1
+position = Vector2(0, 3.0517578e-05)
+rotation = -3.1415925
+texture = ExtResource("6_11rfq")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1624581931]

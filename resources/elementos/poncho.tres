@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CartaElementoRes" format=3 uid="uid://cgi3oq10ekmct"]
+
+[ext_resource type="Script" uid="uid://cg83rr473qki4" path="res://resources/elementos/carta_elemento_res.gd" id="1_j1bd7"]
+[ext_resource type="Texture2D" uid="uid://jh2erp5io8td" path="res://assets/texturas/poncho.png" id="2_j1bd7"]
+
+[resource]
+script = ExtResource("1_j1bd7")
+sprite = ExtResource("2_j1bd7")
+cantidad = 4
+metadata/_custom_type_script = "uid://cg83rr473qki4"

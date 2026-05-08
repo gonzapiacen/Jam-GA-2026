@@ -7,7 +7,7 @@ class_name Player
 var mazo: Mazo
 var mano: Array[Carta] = []
 var descarte: Array[Carta] = []
-var campo: Array[Carta] = [null, null, null]
+var campo: Array[Carta] = []
 
 func tiene_campo_lleno() -> bool:
 	return (campo[0] && campo[1] && campo[2])

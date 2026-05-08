@@ -1,23 +1,21 @@
 [gd_scene format=3 uid="uid://dis815jg1ldj4"]
 
-[ext_resource type="Script" uid="uid://ck2bqjec8603u" path="res://scenes/carta_node.gd" id="1_txgwi"]
+[ext_resource type="Script" uid="uid://cd2jx4vdmu5ji" path="res://scripts/carta.gd" id="1_txgwi"]
 [ext_resource type="Texture2D" uid="uid://dk86omf05fgg7" path="res://assets/texturas/carta_vacia.png" id="2_txgwi"]
 [ext_resource type="Texture2D" uid="uid://cvrlu0mc5m605" path="res://assets/texturas/iconos/icono_consumible.png" id="3_3p8e2"]
 [ext_resource type="FontFile" uid="uid://cenlao1rovtkx" path="res://assets/fonts/alagard.ttf" id="3_cc48w"]
 [ext_resource type="Texture2D" uid="uid://6hj6h5x6onmy" path="res://assets/texturas/dorso_cartas.png" id="3_rx7pn"]
-[ext_resource type="Texture2D" uid="uid://ct7wr85gghekj" path="res://assets/texturas/iconos/icono_curacion.png" id="4_txgwi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ywsyh"]
 size = Vector2(44, 74)
 
-[node name="Carta" type="Node2D" unique_id=527444017]
-z_index = 1
+[node name="Carta" type="Node2D" unique_id=924451003]
 script = ExtResource("1_txgwi")
 
 [node name="Frente" type="Sprite2D" parent="." unique_id=2050905613]
 z_index = 1
 position = Vector2(0, 3.0517578e-05)
-scale = Vector2(1e-05, 0.75)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_txgwi")
 
 [node name="Titulo" type="Label" parent="Frente" unique_id=2013314820]
@@ -30,19 +28,20 @@ theme_override_fonts/font = ExtResource("3_cc48w")
 text = "Titulo"
 horizontal_alignment = 1
 
+[node name="Dibujo" type="Sprite2D" parent="Frente" unique_id=450014628]
+
 [node name="Energia" type="Node2D" parent="Frente" unique_id=1812310512]
-position = Vector2(-15, -28.00003)
+position = Vector2(-18.666666, -40.00004)
 scale = Vector2(1, 1.0000001)
 
 [node name="ValorEnergia" type="Label" parent="Frente/Energia" unique_id=1857645359]
-offset_left = -9.999996
-offset_top = -6.500063
-offset_right = 11.151691
-offset_bottom = 5.499937
+offset_left = -8.000002
+offset_top = -6.6666684
+offset_right = 13.151686
+offset_bottom = 8.333332
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_cc48w")
-theme_override_font_sizes/font_size = 12
-text = "8"
-horizontal_alignment = 1
+text = "99"
 vertical_alignment = 1
 
 [node name="Efecto" type="Node2D" parent="Frente" unique_id=1260407772]
@@ -50,7 +49,6 @@ position = Vector2(13, -29.00003)
 
 [node name="IconoEfecto" type="Sprite2D" parent="Frente/Efecto" unique_id=2114172650]
 position = Vector2(-7, -1)
-texture = ExtResource("4_txgwi")
 
 [node name="ValorEfecto" type="Label" parent="Frente/Efecto" unique_id=1978812870]
 offset_left = -9.0
@@ -59,7 +57,6 @@ offset_right = 12.151688
 offset_bottom = 5.999998
 theme_override_fonts/font = ExtResource("3_cc48w")
 theme_override_font_sizes/font_size = 12
-text = "8"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -88,15 +85,11 @@ offset_right = -11.0
 offset_bottom = 35.99997
 theme_override_fonts/font = ExtResource("3_cc48w")
 theme_override_font_sizes/font_size = 12
-text = "8"
 
 [node name="Dorso" type="Sprite2D" parent="." unique_id=2053787691]
 z_index = 1
 position = Vector2(0, 3.0517578e-05)
-rotation = 3.1415927
+rotation = -3.1415925
 texture = ExtResource("3_rx7pn")
 
-[connection signal="input_event" from="Frente/Area2D" to="." method="_on_area_2d_input_event_info"]
-[connection signal="input_event" from="Frente/Area2D" to="." method="_on_area_2d_input_event"]
-[connection signal="mouse_entered" from="Frente/Area2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Frente/Area2D" to="." method="_on_area_2d_mouse_exited"]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1624581931]

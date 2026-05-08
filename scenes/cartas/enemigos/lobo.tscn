@@ -1,28 +1,24 @@
 [gd_scene format=3 uid="uid://d0nfdo05hin1"]
 
-[ext_resource type="Script" uid="uid://bkdeyxixl5674" path="res://scripts/enemy.gd" id="1_2qwhg"]
-[ext_resource type="Script" uid="uid://j0ehk0ajxtdd" path="res://scripts/c_lobo.gd" id="1_l65w0"]
-[ext_resource type="Texture2D" uid="uid://dk86omf05fgg7" path="res://assets/texturas/carta_vacia.png" id="2_jew85"]
-[ext_resource type="Texture2D" uid="uid://bvt0eu7qamnr5" path="res://assets/texturas/lobo.png" id="3_p7o5b"]
-[ext_resource type="FontFile" uid="uid://cenlao1rovtkx" path="res://assets/fonts/alagard.ttf" id="4_2qwhg"]
-[ext_resource type="Texture2D" uid="uid://6hj6h5x6onmy" path="res://assets/texturas/dorso_cartas.png" id="5_p7o5b"]
+[ext_resource type="Script" uid="uid://cm88d5uvqeusn" path="res://scripts/carta_enemigo.gd" id="1_ctepd"]
+[ext_resource type="Texture2D" uid="uid://bvt0eu7qamnr5" path="res://assets/texturas/lobo.png" id="2_ktyeu"]
+[ext_resource type="Resource" uid="uid://1s3jxhecgpgj" path="res://resources/enemigos/lobo.tres" id="2_uxt55"]
+[ext_resource type="Texture2D" uid="uid://dk86omf05fgg7" path="res://assets/texturas/carta_vacia.png" id="3_uxt55"]
+[ext_resource type="FontFile" uid="uid://cenlao1rovtkx" path="res://assets/fonts/alagard.ttf" id="4_swdbt"]
+[ext_resource type="Texture2D" uid="uid://6hj6h5x6onmy" path="res://assets/texturas/dorso_cartas.png" id="5_n44l0"]
+[ext_resource type="Script" uid="uid://j0ehk0ajxtdd" path="res://scripts/comportamientos/c_lobo.gd" id="6_v5axv"]
 
-[node name="Lobo" type="Node2D" unique_id=807223139 node_paths=PackedStringArray("comportamiento")]
+[node name="Lobo" type="Node2D" unique_id=807223139]
 z_index = 3
-script = ExtResource("1_2qwhg")
-textura = ExtResource("3_p7o5b")
-nombre = "Lobo"
-descripcion = "Un lobo"
-health = 10
-damage = 12
-comportamiento = NodePath("Efectos/CompLobo")
+script = ExtResource("1_ctepd")
+carta_res = ExtResource("2_uxt55")
 
 [node name="Frente" type="Sprite2D" parent="." unique_id=1900998132]
 scale = Vector2(1e-05, 0.75)
-texture = ExtResource("2_jew85")
+texture = ExtResource("3_uxt55")
 
 [node name="Dibujo" type="Sprite2D" parent="Frente" unique_id=2093908295]
-texture = ExtResource("3_p7o5b")
+texture = ExtResource("2_ktyeu")
 
 [node name="Vida" type="Label" parent="Frente" unique_id=1115601003]
 offset_left = -30.0
@@ -30,7 +26,7 @@ offset_top = -50.0
 offset_right = -1.0
 offset_bottom = -27.0
 theme_override_colors/font_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
-theme_override_fonts/font = ExtResource("4_2qwhg")
+theme_override_fonts/font = ExtResource("4_swdbt")
 text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -45,16 +41,16 @@ offset_right = -30.0
 offset_bottom = -27.0
 grow_horizontal = 0
 theme_override_colors/font_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
-theme_override_fonts/font = ExtResource("4_2qwhg")
+theme_override_fonts/font = ExtResource("4_swdbt")
 text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Dorso" type="Sprite2D" parent="." unique_id=1147913024]
-texture = ExtResource("5_p7o5b")
+texture = ExtResource("5_n44l0")
 
 [node name="Efectos" type="Node" parent="." unique_id=37766703]
 
 [node name="CompLobo" type="Node" parent="Efectos" unique_id=1564564913]
-script = ExtResource("1_l65w0")
+script = ExtResource("6_v5axv")
 metadata/_custom_type_script = "uid://j0ehk0ajxtdd"

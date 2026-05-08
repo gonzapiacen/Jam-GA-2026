@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://mbfm4sw3c111"]
 
 [ext_resource type="Texture2D" uid="uid://c6eqslhxlug3d" path="res://assets/texturas/iconos/Volver.png" id="1_6yhot"]
-[ext_resource type="Script" uid="uid://bfpe0q6jtbpr6" path="res://scenes/creditos.gd" id="1_jddgq"]
+[ext_resource type="Script" uid="uid://bfpe0q6jtbpr6" path="res://scripts/creditos.gd" id="1_jddgq"]
 [ext_resource type="Texture2D" uid="uid://lm8m3x4osrhe" path="res://assets/texturas/Fondos/menu_Creditos.png" id="1_spoww"]
 
 [node name="Creditos" type="Control" unique_id=213731317]
