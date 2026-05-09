@@ -1,5 +1,6 @@
-extends Carta2D
-class_name Enemy
+extends Node2D
+
+class_name Enemigo
 
 @export var textura: Texture2D
 @export var nombre: String
@@ -9,7 +10,7 @@ class_name Enemy
 @export var damage: int
 @export var defense: int
 
-@export var comportamiento: Comportamiento
+var comportamiento: Comportamiento
 
 func ejecutar_turno() -> void:
 	comportamiento.avance_fsm()

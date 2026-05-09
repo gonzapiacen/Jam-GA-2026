@@ -3,16 +3,14 @@
 [ext_resource type="Script" uid="uid://01ha161d76qi" path="res://scripts/juego.gd" id="1_bpkdb"]
 [ext_resource type="FontFile" uid="uid://cenlao1rovtkx" path="res://assets/fonts/alagard.ttf" id="2_ae6e5"]
 [ext_resource type="Texture2D" uid="uid://dx53us5sswgvd" path="res://assets/texturas/fondo_Bosque.png" id="3_y8n3i"]
-[ext_resource type="PackedScene" uid="uid://dis815jg1ldj4" path="res://scenes/carta.tscn" id="4_d7syh"]
 [ext_resource type="Texture2D" uid="uid://ctp60vy51om4f" path="res://assets/texturas/frent_carta.png" id="4_pncoq"]
 [ext_resource type="PackedScene" uid="uid://capum1kkvsn3m" path="res://scenes/map_scene.tscn" id="5_d7syh"]
-[ext_resource type="PackedScene" uid="uid://d0nfdo05hin1" path="res://scenes/cartas/lobo.tscn" id="5_py3uc"]
 [ext_resource type="Texture2D" uid="uid://bmsqh3yvvorov" path="res://assets/texturas/mesaCartas.png" id="6_py3uc"]
-[ext_resource type="Script" uid="uid://dfg3llnx0yen2" path="res://scripts/mazo.gd" id="7_d7syh"]
+[ext_resource type="PackedScene" uid="uid://do0mh3rukqw4a" path="res://scenes/mazo.tscn" id="8_ae6e5"]
 [ext_resource type="AudioStream" uid="uid://dldlu0u6ae8ta" path="res://assets/musica/cancion_1.ogg" id="8_d0608"]
+[ext_resource type="PackedScene" uid="uid://b3nkdo7upcciq" path="res://scenes/jugador.tscn" id="8_y8n3i"]
 [ext_resource type="AudioStream" uid="uid://bws86hpu5wjnv" path="res://assets/sonidos/romper_carta.ogg" id="9_spu22"]
 [ext_resource type="AudioStream" uid="uid://tgv0rae3k3qh" path="res://assets/sonidos/poner_carta_en_campo.ogg" id="10_skotl"]
-[ext_resource type="Script" uid="uid://dqp4a748fn57g" path="res://scripts/jugador.gd" id="14_d7syh"]
 [ext_resource type="Script" uid="uid://bw6ir3vg0qv16" path="res://scripts/tablero.gd" id="15_py3uc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3oebh"]
@@ -22,198 +20,6 @@ font = ExtResource("2_ae6e5")
 script = ExtResource("1_bpkdb")
 metadata/_edit_horizontal_guides_ = [356.0, 234.0, 167.0, 302.0, 188.0, 280.0]
 metadata/_edit_vertical_guides_ = [224.0, 63.0, 384.0, 295.0]
-
-[node name="UI" type="Node2D" parent="." unique_id=1764428223]
-z_index = 20
-
-[node name="HP" type="Label" parent="UI" unique_id=1462185738]
-offset_left = 274.0
-offset_top = 333.0
-offset_right = 314.0
-offset_bottom = 356.0
-text = "asdsd"
-label_settings = SubResource("LabelSettings_3oebh")
-
-[node name="HP2" type="Label" parent="UI" unique_id=1858084590]
-offset_left = 248.0
-offset_top = 333.0
-offset_right = 288.0
-offset_bottom = 356.0
-text = "HP:"
-label_settings = SubResource("LabelSettings_3oebh")
-
-[node name="ENG" type="Label" parent="UI" unique_id=1698655519]
-offset_left = 131.0
-offset_top = 333.0
-offset_right = 172.0
-offset_bottom = 356.0
-text = "adasd"
-label_settings = SubResource("LabelSettings_3oebh")
-
-[node name="ENG2" type="Label" parent="UI" unique_id=719542802]
-offset_left = 106.0
-offset_top = 333.0
-offset_right = 147.0
-offset_bottom = 356.0
-text = "AP:"
-label_settings = SubResource("LabelSettings_3oebh")
-
-[node name="Lobo" parent="." unique_id=388588261 instance=ExtResource("5_py3uc")]
-position = Vector2(63, 167)
-
-[node name="Campo" type="Control" parent="Lobo" unique_id=508245655]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 161.0
-offset_top = 21.0
-offset_right = 161.0
-offset_bottom = 21.0
-
-[node name="Opcion1" type="Button" parent="Lobo/Campo" unique_id=462354064]
-visible = false
-z_index = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 42.0
-offset_top = -41.0
-offset_right = 104.0
-offset_bottom = 41.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(31, 41)
-
-[node name="Opcion2" type="Button" parent="Lobo/Campo" unique_id=17764626]
-visible = false
-z_index = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -31.0
-offset_top = -41.0
-offset_right = 31.0
-offset_bottom = 41.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(31, 41)
-
-[node name="Opcion3" type="Button" parent="Lobo/Campo" unique_id=1414869108]
-visible = false
-z_index = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -104.0
-offset_top = -41.0
-offset_right = -42.0
-offset_bottom = 41.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(31, 41)
-
-[node name="Carta" parent="Lobo" unique_id=527444017 instance=ExtResource("4_d7syh")]
-visible = false
-z_index = 5
-
-[node name="Jugador" type="Node" parent="." unique_id=57199260]
-script = ExtResource("14_d7syh")
-metadata/_custom_type_script = "uid://dqp4a748fn57g"
-
-[node name="Tablero" type="Node2D" parent="." unique_id=1330790062 node_paths=PackedStringArray("mazo_jugador")]
-position = Vector2(224, 234)
-script = ExtResource("15_py3uc")
-mazo_jugador = NodePath("Mazo")
-metadata/_custom_type_script = "uid://bw6ir3vg0qv16"
-
-[node name="Mazo" type="Node2D" parent="Tablero" unique_id=1368023219]
-z_index = 1
-position = Vector2(160, 68)
-script = ExtResource("7_d7syh")
-metadata/_custom_type_script = "uid://dfg3llnx0yen2"
-
-[node name="Cantidad" type="Label" parent="Tablero/Mazo" unique_id=1107471493]
-offset_left = 29.0
-offset_top = -10.0
-offset_right = 69.0
-offset_bottom = 13.0
-text = "999"
-
-[node name="Descarte" type="Node2D" parent="Tablero" unique_id=1172116759]
-position = Vector2(-161, 68)
-
-[node name="Mano" type="Node2D" parent="Tablero" unique_id=1656903652]
-z_index = 3
-position = Vector2(0, 122)
-
-[node name="Campo" type="Control" parent="Tablero" unique_id=1541941300]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 224.0
-offset_top = 280.0
-offset_right = 224.0
-offset_bottom = 280.0
-
-[node name="Opcion1" type="Button" parent="Tablero/Campo" unique_id=934089559]
-visible = false
-z_index = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -104.0
-offset_top = -41.0
-offset_right = -42.0
-offset_bottom = 41.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(31, 0)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Opcion2" type="Button" parent="Tablero/Campo" unique_id=1317714911]
-visible = false
-z_index = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -31.0
-offset_top = -41.0
-offset_right = 31.0
-offset_bottom = 41.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(31, 0)
-
-[node name="Opcion3" type="Button" parent="Tablero/Campo" unique_id=938580701]
-visible = false
-z_index = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 42.0
-offset_top = -40.0
-offset_right = 104.0
-offset_bottom = 42.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(31, 0)
 
 [node name="Fondo" type="Sprite2D" parent="." unique_id=2023025988]
 position = Vector2(224.00002, 54)
@@ -246,11 +52,14 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(-362.66666, -64.00001)
 scale = Vector2(0.6666666, 0.3555477)
 
-[node name="CampoCartas" type="Sprite2D" parent="." unique_id=1759704466]
+[node name="Tablero" type="Sprite2D" parent="." unique_id=1759704466 node_paths=PackedStringArray("mazo_enemigo", "mazo_jugador")]
 position = Vector2(224, 234)
 texture = ExtResource("6_py3uc")
+script = ExtResource("15_py3uc")
+mazo_enemigo = NodePath("MazoEnemigo")
+mazo_jugador = NodePath("Jugador/Mazo")
 
-[node name="PasarTurno" type="Button" parent="CampoCartas" unique_id=1799541714]
+[node name="PasarTurno" type="Button" parent="Tablero" unique_id=1799541714]
 offset_left = 143.0
 offset_top = -22.0
 offset_right = 181.0
@@ -258,6 +67,193 @@ offset_bottom = -1.0
 theme_override_fonts/font = ExtResource("2_ae6e5")
 theme_override_font_sizes/font_size = 12
 text = "Pasar"
+
+[node name="MazoEnemigo" parent="Tablero" unique_id=1084814163 instance=ExtResource("8_ae6e5")]
+position = Vector2(-161, -67)
+
+[node name="CampoEnemigo" type="Control" parent="Tablero" unique_id=508245655]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -46.0
+offset_bottom = -46.0
+
+[node name="Opcion1" type="Button" parent="Tablero/CampoEnemigo" unique_id=462354064]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 42.0
+offset_top = -41.0
+offset_right = 104.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(31, 41)
+
+[node name="Opcion2" type="Button" parent="Tablero/CampoEnemigo" unique_id=17764626]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -41.0
+offset_right = 31.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(31, 41)
+
+[node name="Opcion3" type="Button" parent="Tablero/CampoEnemigo" unique_id=1414869108]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -41.0
+offset_right = -42.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(31, 41)
+
+[node name="Jugador" parent="Tablero" unique_id=605533723 instance=ExtResource("8_y8n3i")]
+position = Vector2(0, 122)
+
+[node name="UI" type="Node2D" parent="Tablero/Jugador" unique_id=1764428223]
+z_index = 20
+position = Vector2(-224, -356)
+
+[node name="HP" type="Label" parent="Tablero/Jugador/UI" unique_id=1462185738]
+offset_left = 375.0
+offset_top = 345.0
+offset_right = 415.0
+offset_bottom = 368.0
+text = "asdsd"
+label_settings = SubResource("LabelSettings_3oebh")
+
+[node name="HP2" type="Label" parent="Tablero/Jugador/UI" unique_id=1858084590]
+offset_left = 349.0
+offset_top = 345.0
+offset_right = 389.0
+offset_bottom = 368.0
+text = "HP:"
+label_settings = SubResource("LabelSettings_3oebh")
+
+[node name="ENG" type="Label" parent="Tablero/Jugador/UI" unique_id=1698655519]
+offset_left = 57.0
+offset_top = 345.0
+offset_right = 98.0
+offset_bottom = 368.0
+text = "adasd"
+label_settings = SubResource("LabelSettings_3oebh")
+
+[node name="ENG2" type="Label" parent="Tablero/Jugador/UI" unique_id=719542802]
+offset_left = 32.0
+offset_top = 345.0
+offset_right = 73.0
+offset_bottom = 368.0
+text = "AP:"
+label_settings = SubResource("LabelSettings_3oebh")
+
+[node name="Descarte" type="Node2D" parent="Tablero/Jugador" unique_id=1172116759]
+position = Vector2(-161, -54)
+
+[node name="Mano" type="HBoxContainer" parent="Tablero/Jugador" unique_id=948581803]
+z_index = 3
+layout_direction = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -34.0
+offset_right = 125.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(125, 37.5)
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Control" type="Control" parent="Tablero/Jugador/Mano" unique_id=1533435785]
+layout_mode = 2
+
+[node name="Mazo" parent="Tablero/Jugador" unique_id=1991683831 instance=ExtResource("8_ae6e5")]
+position = Vector2(160, -55)
+
+[node name="Campo" type="Control" parent="Tablero/Jugador" unique_id=1541941300]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -76.0
+offset_bottom = -76.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+
+[node name="Opcion1" type="Button" parent="Tablero/Jugador/Campo" unique_id=934089559]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -41.0
+offset_right = -42.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(31, 0)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Opcion2" type="Button" parent="Tablero/Jugador/Campo" unique_id=1317714911]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -41.0
+offset_right = 31.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(31, 0)
+
+[node name="Opcion3" type="Button" parent="Tablero/Jugador/Campo" unique_id=938580701]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 42.0
+offset_top = -40.0
+offset_right = 104.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(31, 0)
 
 [node name="MusicaFondo" type="AudioStreamPlayer2D" parent="." unique_id=735427863]
 visible = false
@@ -271,4 +267,4 @@ stream = ExtResource("9_spu22")
 [node name="SonidoJugarCarta" type="AudioStreamPlayer2D" parent="." unique_id=1062207297]
 stream = ExtResource("10_skotl")
 
-[connection signal="pressed" from="CampoCartas/PasarTurno" to="." method="_on_pasar_turno_pressed"]
+[connection signal="pressed" from="Tablero/PasarTurno" to="." method="_on_pasar_turno_pressed"]

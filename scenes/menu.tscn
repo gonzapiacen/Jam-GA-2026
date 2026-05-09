@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ui1pbbe13607"]
 
-[ext_resource type="Script" uid="uid://en7p18q6cip7" path="res://scenes/menu.gd" id="1_vjb58"]
+[ext_resource type="Script" uid="uid://en7p18q6cip7" path="res://scripts/menu.gd" id="1_vjb58"]
 [ext_resource type="Texture2D" uid="uid://bkgm1smwsjrji" path="res://assets/texturas/Fondos/menu_principal_GregorioAlvarez.png" id="2_con2f"]
 [ext_resource type="Texture2D" uid="uid://bjsjahnc8dq4q" path="res://assets/texturas/iconos/creditos.png" id="3_con2f"]
 
